@@ -1,4 +1,4 @@
-# Python
+﻿# Python
 __pycache__/
 
 # Personal / Internal files
@@ -23,14 +23,14 @@ venv/
 env/
 ENV/
 
-# PyTorch model files (large — download/train locally)
+# PyTorch model files (large â€” download/train locally)
 model/saved_model/cnn_model.pth
 model/saved_model/blood_group_model.pkl
 model/saved_model/scaler.pkl
 model/saved_model/_cnn_best_weights.pth
 model/saved_model/metrics.pkl
 
-# Dataset (large — download from Kaggle)
+# Dataset (large â€” download from Kaggle)
 data/sample_fingerprints/
 
 # IDE
@@ -58,3 +58,4 @@ desktop.ini
 # Temp
 tmp/
 temp/
+!data/dataset.zip
