@@ -1,0 +1,30 @@
+# Blood Group Detection — Requirements
+# Install all: pip install -r requirements.txt
+
+# ── Deep Learning (CNN) ───────────────────────────────────────────────
+# PyTorch with CUDA — install via: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+torch
+torchvision
+
+# ── Machine Learning (RF fallback) ────────────────────────────────────
+scikit-learn>=1.4.0
+imbalanced-learn
+
+# ── Image Processing ──────────────────────────────────────────────────
+opencv-python
+Pillow
+PyWavelets
+
+# ── Numerical / Scientific ────────────────────────────────────────────
+numpy
+scipy
+
+# ── Visualization ─────────────────────────────────────────────────────
+matplotlib
+seaborn
+
+# ── Model Persistence ─────────────────────────────────────────────────
+joblib
+
+# ── Web Application ───────────────────────────────────────────────────
+streamlit
