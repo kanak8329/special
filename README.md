@@ -39,6 +39,20 @@ HemaType AI predicts a person's blood group (A+, A−, B+, B−, AB+, AB−, O+,
 
 ---
 
+## 🖼️ Sample Dataset Images
+
+Here are a few sample fingerprint images used to train the model, representing each of the 8 blood groups:
+
+| A+ | A− | B+ | B− |
+|:---:|:---:|:---:|:---:|
+| <img src="docs/samples/A_pos.BMP" width="150"> | <img src="docs/samples/A_neg.BMP" width="150"> | <img src="docs/samples/B_pos.BMP" width="150"> | <img src="docs/samples/B_neg.BMP" width="150"> |
+
+| AB+ | AB− | O+ | O− |
+|:---:|:---:|:---:|:---:|
+| <img src="docs/samples/AB_pos.BMP" width="150"> | <img src="docs/samples/AB_neg.BMP" width="150"> | <img src="docs/samples/O_pos.BMP" width="150"> | <img src="docs/samples/O_neg.BMP" width="150"> |
+
+---
+
 ## 🏗️ Architecture
 
 ```
@@ -79,6 +93,12 @@ Input Image (BMP/PNG/JPG)
 | Parameters | 4,798,340 |
 | Training Dataset | 7,470 fingerprint images |
 | Blood Groups | 8 (A+, A−, B+, B−, AB+, AB−, O+, O−) |
+
+### Training Evaluation & Metrics
+<div align="center">
+  <img src="model/saved_model/training_curves.png" width="45%" />
+  <img src="model/saved_model/confusion_matrix.png" width="45%" /> 
+</div>
 
 **Per-class F1 Scores:**
 
