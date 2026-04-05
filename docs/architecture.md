@@ -112,7 +112,7 @@ Input Image (JPEG/PNG)
 ## File Structure
 
 ```
-collage_project_special/
+hematype-ai/
 ├── app.py                         # Streamlit web application
 ├── requirements.txt               # Python dependencies
 ├── README.md                      # Project documentation
