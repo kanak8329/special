@@ -1,6 +1,13 @@
 # Python
 __pycache__/
-*.py[cod]
+
+# Personal / Internal files
+commands_and_changes.md
+doc/
+*.jpeg
+*.jpg
+WhatsApp*
+
 *$py.class
 *.so
 *.pyd
