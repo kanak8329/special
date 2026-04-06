@@ -266,7 +266,6 @@ Pillow
 - Tan, M. & Le, Q. (2019). *EfficientNet: Rethinking Model Scaling for CNNs.* ICML.
 - [Kaggle — Fingerprint-Based Blood Group Dataset](https://www.kaggle.com/datasets/praveengovi/blood-group-detection-using-fingerprint)
 - [PyTorch Transfer Learning Tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)
-- [Krishna et al. — Fingerprint Blood Group Detection (GitHub)](https://github.com/krishna111809/fingerprint-based-blood-group-detection)
 
 ---
 
