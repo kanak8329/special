@@ -1,4 +1,4 @@
-# 🩸 HemaType AI — Blood Group Detection Using Fingerprint
+# 🩸 HemaType AI — Blood Group Detection Using Fingerprint ( major update on the goo)
 
 <div align="center">
 
