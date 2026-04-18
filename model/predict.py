@@ -1,8 +1,11 @@
 """
 Prediction Module — Dual Model Support
 =======================================
-Auto-detects whether a CNN (EfficientNet-B0) or Random Forest model
-is available and uses the appropriate inference pipeline.
+Auto-detects whether a CNN (EfficientNet-B3 / B0) or Random Forest
+model is available and uses the appropriate inference pipeline.
+
+Fix #1: Transform input size is now read from the saved checkpoint
+         (300x300 for B3, 224x224 for B0) instead of being hardcoded.
 
 Priority: CNN model (.pth) >> Random Forest model (.pkl)
 
@@ -22,10 +25,18 @@ from utils.helpers import BLOOD_GROUPS, get_model_dir, format_confidence
 
 # ── Model availability detection ──────────────────────────────────────
 
-def _cnn_model_exists() -> bool:
-    """Check if CNN model file is present."""
-    return os.path.exists(os.path.join(get_model_dir(), 'cnn_model.pth'))
+def _get_available_cnn_variants() -> list:
+    """Check which CNN model variants are present."""
+    model_dir = get_model_dir()
+    variants = []
+    for variant in ['efficientnet_b3', 'efficientnet_b0']:
+        if os.path.exists(os.path.join(model_dir, f'cnn_model_{variant}.pth')):
+            variants.append(variant)
+    return variants
 
+def _cnn_model_exists() -> bool:
+    """Check if any CNN model file is present."""
+    return len(_get_available_cnn_variants()) > 0
 
 def _rf_model_exists() -> bool:
     """Check if Random Forest model files are present."""
@@ -35,8 +46,11 @@ def _rf_model_exists() -> bool:
 
 
 def get_active_model_type() -> str:
-    """Returns 'cnn', 'rf', or 'none'."""
-    if _cnn_model_exists():
+    """Returns 'cnn_multi', 'cnn', 'rf', or 'none'."""
+    variants = _get_available_cnn_variants()
+    if len(variants) > 1:
+        return 'cnn_multi'
+    elif len(variants) == 1:
         return 'cnn'
     if _rf_model_exists():
         return 'rf'
@@ -49,13 +63,12 @@ def load_model():
     """
     Load whichever model is available (CNN preferred).
     Returns a tuple indicating the model type.
-
-    Returns:
-        ('cnn', model, class_names)  or  ('rf', model, scaler)
     """
-    if _cnn_model_exists():
+    variants = _get_available_cnn_variants()
+    if variants:
         from model.cnn_model import load_cnn_model
-        model, class_names, _ = load_cnn_model()
+        # Load the first best available
+        model, class_names, _ = load_cnn_model(model_variant=variants[0])
         return ('cnn', model, class_names)
     elif _rf_model_exists():
         import joblib
@@ -66,58 +79,71 @@ def load_model():
     else:
         raise FileNotFoundError(
             "No trained model found. Please run:\n"
-            "  python model/train.py --mode cnn --dataset-path data/sample_fingerprints"
+            "  python model/train.py --mode cnn --model efficientnet_b3 --dataset-path data/sample_fingerprints"
         )
 
 
-def predict_blood_group(image_input) -> dict:
+def predict_blood_group(image_input, selected_variants=None) -> dict:
     """
     Predict blood group from a fingerprint image.
-    Auto-selects CNN or RF model based on what's available.
+    If multiple CNN models exist, returns results for all of them.
 
     Args:
         image_input: str (file path), PIL.Image, or numpy array
+        selected_variants: optional list of strings specifying which variants to run
 
     Returns:
-        dict with keys:
-            predicted_group  : str   — e.g. 'A+'
-            confidence       : float — top class probability (0–1)
-            all_scores       : list  — confidence for all 8 classes, sorted desc
-            model_type       : str   — 'cnn' or 'rf'
-            feature_breakdown: dict  — feature info (for display)
-            preprocessing_steps: dict — intermediate images
+        dict with keys mapping 'variant_name' -> result dict
+        Even if it's RF, it returns {'rf': result_dict}
     """
-    # Preprocess image (works the same for both models)
     preprocessing_results = preprocess_fingerprint(image_input)
     processed_image = preprocessing_results['processed']
 
     model_type = get_active_model_type()
+    results = {}
 
-    if model_type == 'cnn':
-        return _predict_cnn(processed_image, preprocessing_results)
+    if model_type in ['cnn', 'cnn_multi']:
+        variants = _get_available_cnn_variants()
+        if selected_variants is not None:
+            variants = [v for v in variants if v in selected_variants]
+        for variant in variants:
+            results[variant] = _predict_cnn(processed_image, preprocessing_results, variant)
     elif model_type == 'rf':
-        return _predict_rf(processed_image, preprocessing_results)
+        results['rf'] = _predict_rf(processed_image, preprocessing_results)
     else:
         raise FileNotFoundError(
             "No trained model found. Run: python model/train.py --mode cnn"
         )
+    return results
 
 
 # ── CNN Inference ─────────────────────────────────────────────────────
 
-def _predict_cnn(processed_image: np.ndarray, preprocessing_results: dict) -> dict:
+_cached_cnn_models = {}
+
+def _predict_cnn(processed_image: np.ndarray, preprocessing_results: dict, model_variant: str = 'efficientnet_b3') -> dict:
     """Run inference using the CNN model."""
     import torch
     from PIL import Image as PILImage
-    from model.cnn_model import load_cnn_model, get_inference_transform
+    from model.cnn_model import load_cnn_model, get_inference_transform, EFFICIENTNET_VARIANTS
 
+    global _cached_cnn_models
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model, class_names, metrics = load_cnn_model(device=device)
+    
+    if model_variant not in _cached_cnn_models:
+        _cached_cnn_models[model_variant] = load_cnn_model(device=device, model_variant=model_variant)
+        
+    model, class_names, metrics = _cached_cnn_models[model_variant]
 
-    # Convert numpy array → PIL Image → transform → tensor
-    transform = get_inference_transform()
+    _, _, input_size, in_features = EFFICIENTNET_VARIANTS.get(
+        model_variant, EFFICIENTNET_VARIANTS['efficientnet_b0']
+    )
+    param_millions = model.count_parameters() / 1e6
+
+    # Convert numpy array -> PIL Image -> correct-size transform -> tensor
+    transform = get_inference_transform(model_variant=model_variant)
     pil_img   = PILImage.fromarray(processed_image)
-    tensor    = transform(pil_img).unsqueeze(0).to(device)   # [1, 3, 224, 224]
+    tensor    = transform(pil_img).unsqueeze(0).to(device)  # [1,3,input_size,input_size]
 
     with torch.no_grad():
         if torch.cuda.is_available():
@@ -128,14 +154,11 @@ def _predict_cnn(processed_image: np.ndarray, preprocessing_results: dict) -> di
             logits = model(tensor)
         probs = torch.softmax(logits, dim=1).cpu().numpy()[0]
 
-    # class_names is the sorted alphabetical order from ImageFolder
-    # Map back to standard BLOOD_GROUPS ordering for consistent display
-    # Build a probs array in BLOOD_GROUPS order
+    # Map ImageFolder alphabetical order -> BLOOD_GROUPS standard order
     reordered_probs = np.zeros(len(BLOOD_GROUPS))
     for idx, cls_name in enumerate(class_names):
-        # Normalize cls_name (handle A_pos → A+ etc.)
         normalized = cls_name.upper().replace('_POS', '+').replace('_NEG', '-') \
-                                      .replace('POS', '+').replace('NEG', '-')
+                                     .replace('POS', '+').replace('NEG', '-')
         if normalized in BLOOD_GROUPS:
             bg_idx = BLOOD_GROUPS.index(normalized)
             reordered_probs[bg_idx] = probs[idx]
@@ -152,12 +175,12 @@ def _predict_cnn(processed_image: np.ndarray, preprocessing_results: dict) -> di
         'model_type'         : 'cnn',
         'features'           : None,
         'feature_breakdown'  : {
-            'model_type'  : 'cnn',
-            'architecture': 'EfficientNet-B0',
-            'input_size'  : '224×224 px',
-            'parameters'  : '5.3M',
-            'pretrained'  : 'ImageNet (ILSVRC2012)',
-            'total_features': 0,   # CNN learns features internally
+            'model_type'    : 'cnn',
+            'architecture'  : model_variant.replace('efficientnet_', 'EfficientNet-').upper().replace('_B', '-B'),
+            'input_size'    : f'{input_size}x{input_size} px',
+            'parameters'    : f'{param_millions:.1f}M',
+            'pretrained'    : 'ImageNet',
+            'total_features': 0,
         },
         'preprocessing_steps': preprocessing_results,
     }
@@ -165,14 +188,21 @@ def _predict_cnn(processed_image: np.ndarray, preprocessing_results: dict) -> di
 
 # ── RF Inference ──────────────────────────────────────────────────────
 
+_cached_rf_model = None
+
 def _predict_rf(processed_image: np.ndarray, preprocessing_results: dict) -> dict:
     """Run inference using the Random Forest model."""
     import joblib
     from model.feature_extraction import extract_all_features
 
-    model_dir = get_model_dir()
-    model  = joblib.load(os.path.join(model_dir, 'blood_group_model.pkl'))
-    scaler = joblib.load(os.path.join(model_dir, 'scaler.pkl'))
+    global _cached_rf_model
+    if _cached_rf_model is None:
+        model_dir = get_model_dir()
+        model  = joblib.load(os.path.join(model_dir, 'blood_group_model.pkl'))
+        scaler = joblib.load(os.path.join(model_dir, 'scaler.pkl'))
+        _cached_rf_model = (model, scaler)
+    else:
+        model, scaler = _cached_rf_model
 
     features, feature_breakdown = extract_all_features(processed_image)
     features_scaled = scaler.transform(features.reshape(1, -1))

@@ -1,174 +1,59 @@
+# -*- coding: utf-8 -*-
 """
 Blood Group Detection — Premium Health UI
 ==========================================
 Run: streamlit run app.py
 """
 
+from utils.helpers import BLOOD_GROUPS, BLOOD_GROUP_COLORS, BLOOD_GROUP_INFO, get_sample_dir, get_model_dir
+from model.predict import predict_blood_group, load_model, get_active_model_type, _get_available_cnn_variants
 import streamlit as st
 import numpy as np
-import cv2, os, sys, time, json
+import cv2
+import os
+import sys
+import time
+import json
+import textwrap
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib; matplotlib.use('Agg')
 import seaborn as sns
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from model.predict import predict_blood_group, load_model, get_active_model_type
-from utils.helpers import BLOOD_GROUPS, BLOOD_GROUP_COLORS, BLOOD_GROUP_INFO, get_sample_dir, get_model_dir
 
-st.set_page_config(page_title="HemaType AI | Blood Group Detection", page_icon="🩸", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="HemaType AI | Blood Group Detection",
+                   page_icon="🩸", layout="wide", initial_sidebar_state="expanded")
 
 # ══════════════════════════════════════════════════════════════
 #  DESIGN SYSTEM
 # ══════════════════════════════════════════════════════════════
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root { --app-bg: #fbfbfd; --card-bg: #ffffff; --text-h: #1d1d1f; --text-p: #86868b; --accent: #0071e3; --accent-hover: #005cbf; --red: #ff3b30; --success: #34c759; --border: rgba(0,0,0,0.06); }
 
-:root {
-  --bg:       #050b18;
-  --bg2:      #0a1628;
-  --card:     rgba(255,255,255,0.04);
-  --card-b:   rgba(255,255,255,0.09);
-  --red:      #e63946;
-  --red-g:    linear-gradient(135deg,#e63946,#c1121f);
-  --teal:     #06d6a0;
-  --blue:     #4361ee;
-  --purple:   #7b2d8b;
-  --gold:     #ffd60a;
-  --text:     #f1f5f9;
-  --muted:    #7f8fa4;
-  --border:   rgba(255,255,255,0.08);
-}
+* { box-sizing: border-box; } .stApp { background: var(--app-bg); font-family: 'Inter', -apple-system, sans-serif; color: var(--text-h); }
+/* Remove background orbs for cleaner Apple-like minimal feel */ .orb1, .orb2 { display: none; }
 
-* { box-sizing: border-box; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(15px)} to{opacity:1;transform:translateY(0)} } @keyframes pulseHeart { 0%,100%{transform:scale(1)} 15%{transform:scale(1.1)} 30%{transform:scale(1)} 45%{transform:scale(1.05)} }
 
-.stApp { background: var(--bg); font-family: 'Inter', sans-serif; color: var(--text); }
+/* ── Premium Cards ── */ .glass { background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.03); transition: all 0.3s cubic-bezier(.25,.8,.25,1); } .glass:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.06); transform: translateY(-2px); }
 
-/* ── Floating orbs background ── */
-.stApp::before {
-  content:''; position:fixed; top:-20%; left:-10%; width:600px; height:600px;
-  background: radial-gradient(circle, rgba(230,57,70,0.12) 0%, transparent 65%);
-  border-radius:50%; pointer-events:none; z-index:0; animation: drift1 12s ease-in-out infinite alternate;
-}
-.stApp::after {
-  content:''; position:fixed; bottom:-10%; right:-5%; width:500px; height:500px;
-  background: radial-gradient(circle, rgba(67,97,238,0.1) 0%, transparent 65%);
-  border-radius:50%; pointer-events:none; z-index:0; animation: drift2 15s ease-in-out infinite alternate;
-}
+/* ── Hero Section ── */ .hero { background: #ffffff; border: 1px solid var(--border); border-radius: 24px; padding: 3rem 2.5rem; text-align: center; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02); animation: fadeUp .6s ease-out; } .hero h1 { font-family:'Inter', sans-serif; font-size:3rem; font-weight:800; color: var(--text-h); margin:0; letter-spacing:-1.2px; } .hero p { color:var(--text-p); font-size:1.15rem; font-weight:500; margin:.8rem 0 0; } .blood-drop { font-size:3.5rem; animation: pulseHeart 2s ease-in-out infinite; display:inline-block; }
 
-@keyframes drift1 { from{transform:translate(0,0) scale(1)} to{transform:translate(80px,60px) scale(1.15)} }
-@keyframes drift2 { from{transform:translate(0,0) scale(1)} to{transform:translate(-60px,-80px) scale(1.2)} }
-@keyframes pulse  { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.7;transform:scale(1.05)} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-@keyframes spin   { to{transform:rotate(360deg)} }
-@keyframes glow   { 0%,100%{box-shadow:0 0 20px rgba(230,57,70,.3)} 50%{box-shadow:0 0 40px rgba(230,57,70,.6)} }
-@keyframes heartbeat { 0%,100%{transform:scale(1)} 14%{transform:scale(1.15)} 28%{transform:scale(1)} 42%{transform:scale(1.08)} }
+/* ── Metric Cards ── */ .metric-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem; text-align: center; transition: all .3s ease; box-shadow: 0 2px 12px rgba(0,0,0,0.02); } .metric-card:hover { transform: translateY(-3px) scale(1.02); border-color: rgba(0,113,227,.2); box-shadow: 0 8px 24px rgba(0,113,227,.06); } .metric-val { font-family:'Inter', sans-serif; font-size:1.8rem; font-weight:700; color:var(--accent); } .metric-lbl { color:var(--text-p); font-size:.78rem; text-transform:uppercase; font-weight:600; letter-spacing:1px; margin-top:.4rem; }
 
-/* ── Glass cards ── */
-.glass {
-  background: var(--card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  transition: all .35s cubic-bezier(.16,1,.3,1);
-}
-.glass:hover { background: var(--card-b); border-color: rgba(230,57,70,.3); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+/* ── Clinical Paper Report ── */ .clinical-report { background: #ffffff; border: 1px solid #e5e5ea; border-left: 6px solid #0071e3; border-radius: 12px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.04); font-family: 'Inter', sans-serif; color: #1d1d1f; margin: 1.5rem 0; animation: fadeUp .8s ease; } .cr-header { border-bottom: 1px solid #f2f2f7; padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; } .cr-header h2 { margin: 0; color: #1d1d1f; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px; } .cr-header p { margin: 0; color: #86868b; font-size: 0.85rem; } .cr-header .date { font-family: monospace; color: #86868b; font-size:0.8rem; } .cr-row { display: flex; justify-content: space-between; padding: 0.8rem 0; font-size: 0.95rem; border-bottom: 1px solid #f9f9f9;} .cr-row:last-child { border-bottom: none; } .cr-label { color: #86868b; font-weight: 500; font-size: 0.85rem; } .cr-value { font-weight: 600; color: #1d1d1f; } .cr-highlight { font-size: 1.5rem; font-weight: 800; color: var(--red); } .cr-footer { border-top: 1px solid #f2f2f7; margin-top: 2rem; padding-top: 1rem; text-align: center; color: #aeaeb2; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
 
-/* ── Hero header ── */
-.hero {
-  background: linear-gradient(135deg, rgba(230,57,70,.15) 0%, rgba(67,97,238,.1) 50%, rgba(6,214,160,.08) 100%);
-  border: 1px solid rgba(230,57,70,.2);
-  border-radius: 28px; padding: 3rem 2.5rem; text-align: center; margin-bottom: 2rem;
-  position: relative; overflow: hidden; animation: fadeUp .7s cubic-bezier(.16,1,.3,1);
-}
-.hero::before {
-  content:''; position:absolute; top:0; left:0; right:0; bottom:0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e63946' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
-}
-.hero h1 { font-family:'Space Grotesk',sans-serif; font-size:2.8rem; font-weight:800; background:linear-gradient(135deg,#fff 30%,#e63946); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:0; letter-spacing:-1px; }
-.hero p  { color:var(--muted); font-size:1.1rem; margin:.8rem 0 0; }
+/* ── Upload zone ── */ div[data-testid="stFileUploader"] { border: 2px dashed #d1d1d6; border-radius:16px; padding:1.5rem; background: #fafafa; transition:all .2s; } div[data-testid="stFileUploader"]:hover { border-color:var(--accent); background: #f0f8ff; }
 
-/* ── Blood drop icon ── */
-.blood-drop { font-size:3.5rem; animation: heartbeat 1.8s ease-in-out infinite; display:inline-block; }
+/* ── Sidebar ── */ [data-testid="stSidebar"] { background:#ffffff; border-right:1px solid #e5e5ea; } [data-testid="stSidebar"] .stRadio label { font-weight: 500; color: #1d1d1f !important; } [data-testid="stSidebar"] .stRadio label:hover { color:var(--accent) !important; }
 
-/* ── Metric cards ── */
-.metric-card {
-  background: var(--card); backdrop-filter: blur(16px); border: 1px solid var(--border);
-  border-radius: 20px; padding: 1.4rem; text-align: center; transition: all .3s ease;
-}
-.metric-card:hover { transform: translateY(-6px) scale(1.02); border-color: rgba(230,57,70,.4); box-shadow: 0 16px 40px rgba(230,57,70,.15); }
-.metric-val { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:800; background:linear-gradient(135deg,var(--teal),var(--blue)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.metric-lbl { color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:2px; margin-top:.3rem; }
+/* ── Buttons ── */ .stButton button, .stDownloadButton button { background: var(--accent) !important; color:#fff !important; border:none !important; border-radius:12px !important; font-weight:600 !important; box-shadow: 0 4px 10px rgba(0,113,227,0.2) !important; transition:all .2s ease !important; } .stButton button:hover, .stDownloadButton button:hover { transform:scale(1.03) !important; background: var(--accent-hover) !important; box-shadow:0 6px 14px rgba(0,113,227,0.3) !important; }
 
-/* ── Result reveal card ── */
-.result-reveal {
-  background: linear-gradient(135deg, rgba(230,57,70,.08), rgba(67,97,238,.06));
-  border: 1px solid rgba(230,57,70,.3); border-radius: 28px; padding: 3.5rem 2rem;
-  text-align: center; animation: fadeUp .6s cubic-bezier(.16,1,.3,1);
-}
-.bg-type { font-family:'Space Grotesk',sans-serif; font-size:5.5rem; font-weight:900; background:linear-gradient(135deg,#e63946,#ff6b6b,#ffd60a); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1.1; animation: glow 2s ease-in-out infinite; }
-.bg-label { color:var(--muted); font-size:.85rem; text-transform:uppercase; letter-spacing:4px; font-weight:600; }
-.bg-conf { color:var(--teal); font-size:1.4rem; font-weight:700; margin-top:.5rem; }
+/* ── Miscellaneous ── */ .conf-bar-track { background:#f2f2f7; border-radius:99px; height:8px; overflow:hidden; } .conf-bar-fill { height:100%; border-radius:99px; background:var(--accent); transition:width 1s ease; } /* ── Compatibility Matrix ── */ .compat-matrix { display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; padding: 2rem; background: #fff; border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.03); border: 1px solid var(--border); overflow-x: auto; font-family:'Inter',sans-serif;} .cm-header { display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; color: #86868b; } .cm-row-header { display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; color: #1d1d1f; background: #f2f2f7; border-radius: 12px; padding: 0.8rem 0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); } .cm-cell { display: flex; align-items: center; justify-content: center; padding: 0.8rem 0; border-radius: 12px; font-weight: 800; font-size: 1.3rem; transition: all 0.2s cubic-bezier(.25,.8,.25,1); border: 1px solid transparent; } .cm-cell:hover { transform: scale(1.15); box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-color: rgba(0,0,0,0.1); z-index: 10; cursor: default; } .cm-can { background: rgba(52, 199, 89, 0.15); color: #34c759; } .cm-cannot { background: #fafafa; color: #d1d1d6; font-weight: 400; font-size: 1rem; }
+/* ── Pills ── */ .pill-green { display:flex; align-items:center; gap:.8rem; padding:1.2rem; margin:.6rem 0; background: #ffffff; border: 1px solid rgba(52,199,89,0.3); border-left: 6px solid #34c759; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: 0.2s; } .pill-green:hover { transform: translateX(5px); box-shadow: 0 6px 16px rgba(52,199,89,0.1); } .pill-blue { display:flex; align-items:center; gap:.8rem; padding:1.2rem; margin:.6rem 0; background: #ffffff; border: 1px solid rgba(0,113,227,0.3); border-left: 6px solid #0071e3; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: 0.2s; } .pill-blue:hover { transform: translateX(5px); box-shadow: 0 6px 16px rgba(0,113,227,0.1); }
 
-/* ── Confidence bar ── */
-.conf-bar-wrap { margin: .6rem 0; }
-.conf-bar-label { display:flex; justify-content:space-between; color:var(--muted); font-size:.82rem; margin-bottom:.35rem; }
-.conf-bar-track { background:rgba(255,255,255,.07); border-radius:99px; height:10px; overflow:hidden; }
-.conf-bar-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--red),var(--blue)); transition:width 1.2s cubic-bezier(.16,1,.3,1); position:relative; }
-.conf-bar-fill::after { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent); animation: shimmer 2s infinite; }
-@keyframes shimmer { from{transform:translateX(-100%)} to{transform:translateX(100%)} }
-
-/* ── Preprocessing steps ── */
-.step-badge { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:.5rem .8rem; text-align:center; font-size:.78rem; color:var(--muted); margin-top:.4rem; }
-.step-badge span { color:var(--teal); font-weight:600; }
-
-/* ── Compatibility matrix ── */
-.compat-grid { display:grid; grid-template-columns:repeat(8,1fr); gap:6px; }
-.compat-cell { border-radius:10px; padding:.55rem .2rem; text-align:center; font-size:.7rem; font-weight:700; transition:transform .2s; cursor:default; }
-.compat-cell:hover { transform:scale(1.12); z-index:1; }
-.can { background:rgba(6,214,160,.2); border:1px solid rgba(6,214,160,.4); color:#06d6a0; }
-.cannot { background:rgba(230,57,70,.12); border:1px solid rgba(230,57,70,.25); color:#e63946; }
-
-/* ── Upload zone ── */
-div[data-testid="stFileUploader"] { border:2px dashed rgba(230,57,70,.35); border-radius:20px; padding:2rem; background:rgba(230,57,70,.02); transition:all .3s; }
-div[data-testid="stFileUploader"]:hover { border-color:rgba(230,57,70,.7); background:rgba(230,57,70,.05); }
-
-/* ── Sidebar ── */
-[data-testid="stSidebar"] { background:rgba(5,11,24,.97); border-right:1px solid var(--border); }
-[data-testid="stSidebar"] .stRadio label { color:var(--muted) !important; transition:color .2s; }
-[data-testid="stSidebar"] .stRadio label:hover { color:var(--text) !important; }
-
-/* ── Buttons ── */
-.stButton button, .stDownloadButton button {
-  background: var(--red-g) !important; color:#fff !important; border:none !important;
-  border-radius:14px !important; font-weight:600 !important; letter-spacing:.3px !important;
-  transition:all .25s cubic-bezier(.16,1,.3,1) !important;
-}
-.stButton button:hover, .stDownloadButton button:hover {
-  transform:translateY(-2px) scale(1.02) !important;
-  box-shadow:0 12px 28px rgba(230,57,70,.4) !important;
-}
-
-/* ── Scrollbar ── */
-::-webkit-scrollbar { width:5px; } ::-webkit-scrollbar-track { background:transparent; }
-::-webkit-scrollbar-thumb { background:rgba(230,57,70,.4); border-radius:99px; }
-
-/* ── Divider ── */
-.divider { height:1px; background:linear-gradient(90deg,transparent,rgba(230,57,70,.3),transparent); margin:2rem 0; }
-
-/* ── Feature pill ── */
-.pill { display:inline-block; padding:.3rem .9rem; border-radius:99px; border:1px solid var(--border); font-size:.78rem; color:var(--muted); margin:.2rem; background:var(--card); }
-
-/* ── Info box ── */
-.info-box { background:rgba(6,214,160,.06); border:1px solid rgba(6,214,160,.2); border-radius:16px; padding:1.2rem 1.5rem; color:#c8f7ec; font-size:.88rem; line-height:1.7; }
-
-/* ── model badge ── */
-.model-badge { display:inline-block; padding:.3rem 1rem; border-radius:99px; font-size:.8rem; font-weight:700; letter-spacing:1px; margin-left:8px; animation:pulse 2.5s ease-in-out infinite; }
-.badge-cnn { background:linear-gradient(135deg,#7b2d8b,#4361ee); color:#fff; }
-.badge-rf  { background:linear-gradient(135deg,#059669,#06d6a0); color:#fff; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -202,257 +87,287 @@ BG_FACTS = {
 #  SIDEBAR
 # ══════════════════════════════════════════════════════════════
 with st.sidebar:
-    st.markdown("<div style='text-align:center;padding:1rem 0'>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center;padding:1rem 0'>",
+                unsafe_allow_html=True)
     st.markdown("<div style='font-size:2.5rem;animation:heartbeat 1.8s ease-in-out infinite;display:inline-block'>🩸</div>", unsafe_allow_html=True)
     st.markdown("<h2 style='margin:.5rem 0 .2rem;font-family:Space Grotesk,sans-serif;font-size:1.3rem'>HemaType AI</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#7f8fa4;font-size:.78rem;margin:0'>Blood Group Detection</p></div>", unsafe_allow_html=True)
+    st.markdown("<p style='color:#7f8fa4;font-size:.78rem;margin:0'>Blood Group Detection</p></div>",
+                unsafe_allow_html=True)
     st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
 
-    page = st.radio("Navigate", ["🔬 Detection", "🔄 Compatibility", "📊 Architecture", "ℹ️ About"], label_visibility="collapsed")
+    page = st.radio("Navigate", ["🔬 Detection", "🔄 Compatibility",
+                    "📊 Architecture", "ℹ️ About"], label_visibility="collapsed")
 
     st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
 
     active_model = get_active_model_type()
     badge_cls = "badge-cnn" if active_model == 'cnn' else "badge-rf"
-    badge_txt = "🧠 EfficientNet-B0" if active_model == 'cnn' else "🌲 Random Forest"
-    st.markdown(f"<p style='color:#7f8fa4;font-size:.75rem;text-align:center;'>Active Model</p><div style='text-align:center'><span class='model-badge {badge_cls}'>{badge_txt}</span></div>", unsafe_allow_html=True)
+    badge_txt = "🧠 EfficientNet-B3" if active_model == 'cnn' else "🌲 Random Forest"
+    st.markdown(
+        f"<p style='color:#86868b;font-size:.75rem;text-align:center;'>Active Model</p><div style='text-align:center'><span style='background:#0071e3;color:white;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:600;'>{badge_txt}</span></div>", unsafe_allow_html=True)
 
     if page == "🔬 Detection":
-        st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
-        st.markdown("<p style='color:#7f8fa4;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px'>Upload Fingerprint</p>", unsafe_allow_html=True)
-        uploaded_file = st.file_uploader("Drop fingerprint image", type=['png','jpg','jpeg','bmp','tiff'], help="Upload BMP, JPG, or PNG fingerprint image", label_visibility="collapsed")
+        st.markdown("<p style='font-size:.85rem;color:grey;padding-top:1rem;'>Use the main page controls to upload your fingerprint images or select clinically pre-processed samples.</p>", unsafe_allow_html=True)
 
-        st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
-        st.markdown("<p style='color:#7f8fa4;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px'>Sample Images</p>", unsafe_allow_html=True)
-        sample_dir = get_sample_dir()
-        use_sample = None
-        if os.path.exists(sample_dir):
-            groups = sorted(os.listdir(sample_dir))
-            if groups:
-                sel = st.selectbox("Blood group:", groups, label_visibility="collapsed")
-                gp = os.path.join(sample_dir, sel)
-                samples = [f for f in os.listdir(gp) if f.lower().endswith(('.png','.bmp','.jpg'))] if os.path.exists(gp) else []
-                if samples and st.button("🔍 Use Sample", use_container_width=True):
-                    use_sample = os.path.join(gp, samples[0])
+    st.markdown("<p style='color:#90a4ae;font-size:.75rem;text-align:center;margin-top:2.5rem;font-weight:500'>HemaType Clinical • 2026</p>", unsafe_allow_html=True)
 
-    st.markdown("<p style='color:#3d4b60;font-size:.7rem;text-align:center;margin-top:2rem'>HemaType AI • 2026</p>", unsafe_allow_html=True)
+# Inject Orbs
+st.markdown("<div class='orb1'></div><div class='orb2'></div>",
+            unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
 #  PAGE: DETECTION
 # ══════════════════════════════════════════════════════════════
 if page == "🔬 Detection":
-    model_type_label = "Deep Learning (EfficientNet-B0 CNN)" if active_model == 'cnn' else "Machine Learning (Random Forest)"
-    st.markdown(f"""
-    <div class='hero'>
-      <div class='blood-drop'>🩸</div>
+    model_type_label = "Deep Learning (EfficientNet-B3 CNN)" if active_model == 'cnn' else "Machine Learning (Random Forest)"
+    st.markdown(f'''
+    <div class="hero">
+      <div class="blood-drop">🩸</div>
       <h1>HemaType AI</h1>
-      <p>Non-invasive blood group detection from fingerprint patterns using {model_type_label}</p>
-      <div style='margin-top:1rem'>
-        <span class='pill'>🎮 GPU Accelerated</span>
-        <span class='pill'>🧠 Transfer Learning</span>
-        <span class='pill'>📊 8 Blood Groups</span>
-        <span class='pill'>⚡ ~2s Prediction</span>
-      </div>
+      <p>Non-invasive blood group analysis via {model_type_label}</p>
     </div>
-    """, unsafe_allow_html=True)
+    ''', unsafe_allow_html=True)
 
     model_dir = get_model_dir()
     cnn_exists = os.path.exists(os.path.join(model_dir, 'cnn_model.pth'))
-    rf_exists = os.path.exists(os.path.join(model_dir, 'blood_group_model.pkl'))
+    rf_exists = os.path.exists(os.path.join(
+        model_dir, 'blood_group_model.pkl'))
 
     if not cnn_exists and not rf_exists:
         st.error("⚠️ **No trained model found!** Please run training first:\n```\npython model/train.py --mode cnn --dataset-path data/sample_fingerprints\n```")
         st.stop()
 
+    st.markdown("### 📥 Load Patient Fingerprint")
+    up_col, smp_col = st.columns([1.5, 1])
+
+    with up_col:
+        uploaded_file = st.file_uploader("Upload patient fingerprint:", type=[
+                                         'png','jpg','jpeg','bmp','tiff'])
+
+    use_sample = None
+    with smp_col:
+        st.markdown(
+            "<div style='margin-bottom:.5rem'>Or select clinical sample:</div>", unsafe_allow_html=True)
+        sample_dir = get_sample_dir()
+        if os.path.exists(sample_dir):
+            groups = sorted(os.listdir(sample_dir))
+            if groups:
+                sel = st.selectbox("Select Blood Group",
+                                   groups, label_visibility="collapsed")
+                gp = os.path.join(sample_dir, sel)
+                samples = [f for f in os.listdir(gp) if f.lower().endswith(
+                    ('.png','.bmp','.jpg'))] if os.path.exists(gp) else []
+                if samples and st.button("🔍 Use Sample Data", use_container_width=True):
+                    use_sample = os.path.join(gp, samples[0])
+
+    st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
+
     image_to_process = None
     if 'uploaded_file' in dir() and uploaded_file is not None:
         image_to_process = Image.open(uploaded_file)
-    elif 'use_sample' in dir() and use_sample:
+    elif use_sample:
         image_to_process = use_sample
+        
+    st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
+    st.markdown("### 🎛️ Diagnostic Model Selection")
+    
+    available_variants = _get_available_cnn_variants()
+    if not available_variants:
+        available_variants = ['efficientnet_b3'] # fallback
+        
+    dropdown_options = ["Run Both (Side-by-Side Comparison)"] + [f"EfficientNet-{v.split('_')[-1].upper()}" for v in available_variants]
+    selected_mode = st.selectbox("Select Model Architecture", dropdown_options)
+    
+    variants_to_run = available_variants
+    if selected_mode != "Run Both (Side-by-Side Comparison)":
+        selected_b_type = selected_mode.split('-')[-1].lower() # e.g. b3
+        variants_to_run = [v for v in available_variants if v.endswith(selected_b_type)]
 
     if image_to_process is not None:
         with st.spinner(""):
-            st.markdown("""
-            <div style='text-align:center;padding:2rem;'>
-              <div style='font-size:2rem;animation:spin 1.2s linear infinite;display:inline-block'>⚙️</div>
-              <p style='color:#7f8fa4;margin:.5rem 0 0'>Analyzing fingerprint with AI...</p>
-            </div>""", unsafe_allow_html=True)
+            st.markdown(
+                "<div style='text-align:center;padding:2rem;'>"
+                "<div style='font-size:2rem;animation:spin 1.2s linear infinite;display:inline-block'>⚙️</div>"
+                "<p style='color:#7f8fa4;margin:.5rem 0 0'>Analyzing fingerprint with AI...</p>"
+                "</div>",
+                unsafe_allow_html=True
+            )
             t0 = time.time()
             try:
-                result = predict_blood_group(image_to_process)
+                results_dict = predict_blood_group(image_to_process, selected_variants=variants_to_run)
             except Exception as e:
                 st.error(f"Error: {str(e)}")
                 st.stop()
-            elapsed = time.time() - t0
+            total_elapsed = time.time() - t0
 
-        predicted = result['predicted_group']
-        confidence = result['confidence']
-        all_scores = result['all_scores']
-        breakdown = result['feature_breakdown']
 
-        # ── Result Card ──────────────────────────────────────────────
-        r1, r2, r3 = st.columns([1, 1.2, 1])
-        with r2:
-            st.markdown(f"""
-            <div class='result-reveal'>
-              <div class='bg-label'>Predicted Blood Group</div>
-              <div class='bg-type'>{predicted}</div>
-              <div class='bg-conf'>✓ {confidence*100:.1f}% Confidence</div>
-              <div style='color:#7f8fa4;font-size:.85rem;margin-top:.5rem'>⏱ {elapsed:.2f}s  •  {badge_txt}</div>
-              <div style='margin-top:1.2rem' class='info-box'>{BG_FACTS.get(predicted,'')}</div>
-            </div>
-            """, unsafe_allow_html=True)
+        if not results_dict:
+            st.error("No predictions returned from the model.")
+            st.stop()
+            
+        cols = st.columns(len(results_dict))
+        
+        for idx, (variant_name, result) in enumerate(results_dict.items()):
+            with cols[idx]:
+                predicted = result['predicted_group']
+                confidence = result['confidence']
+                all_scores = result['all_scores']
+                breakdown = result['feature_breakdown']
+                
+                # Clinical Report
+                import datetime
+                report_id = f"HT-{np.random.randint(10000, 99999)}"
+                current_time = datetime.datetime.now().strftime("%Y-%m-%d  %H:%M:%S")
+                
+                html_parts = []
+                html_parts.append("<div class='clinical-report'>")
+                html_parts.append("  <div class='cr-header'>")
+                html_parts.append("    <div>")
+                html_parts.append(f"      <h2>{variant_name.replace('efficientnet_', 'EfficientNet-').upper()} Report</h2>")
+                html_parts.append("      <p>HemaType AI Diagnostic System v4.0</p>")
+                html_parts.append("    </div>")
+                html_parts.append(f"    <div class='date'>{current_time}</div>")
+                html_parts.append("  </div>")
+                html_parts.append("  <div class='cr-body'>")
+                html_parts.append("    <div class='cr-row'>")
+                html_parts.append("      <span class='cr-label'>Report ID</span>")
+                html_parts.append(f"      <span class='cr-value'>{report_id}</span>")
+                html_parts.append("    </div>")
+                html_parts.append("    <div class='cr-row' style='margin-top:1.5rem; border-bottom:none; align-items:center;'>")
+                html_parts.append("      <span class='cr-label'>Detected Blood Group</span>")
+                html_parts.append(f"      <span class='cr-highlight'>{predicted}</span>")
+                html_parts.append("    </div>")
+                html_parts.append("    <div class='cr-row' style='border-bottom:none;'>")
+                html_parts.append("      <span class='cr-label'>Analysis Confidence</span>")
+                html_parts.append(f"      <span class='cr-value' style='color:#0071e3;font-size:1.1rem;'>✓ {confidence*100:.1f}%</span>")
+                html_parts.append("    </div>")
+                html_parts.append("  </div>")
+                html_parts.append("</div>")
+                st.markdown("".join(html_parts), unsafe_allow_html=True)
+                
+                st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
+                st.markdown(f"### 📊 Confidence ({variant_name.upper()})")
+                bars_html = ""
+                for s in all_scores:
+                    pct = s['confidence'] * 100
+                    is_top = s['group'] == predicted
+                    fill_color = "linear-gradient(90deg,#e63946,#ff6b6b)" if is_top else "linear-gradient(90deg,#4361ee,#06d6a0)"
+                    weight = "700" if is_top else "400"
+                    color_group_name = '#1d1d1f' if is_top else '#86868b'
+                    color_pct = '#0071e3' if is_top else '#86868b'
+                    
+                    b_parts = []
+                    b_parts.append("<div class='conf-bar-wrap'>")
+                    b_parts.append("  <div class='conf-bar-label'>")
+                    b_parts.append(f"    <span style='font-weight:{weight};color:{color_group_name}'>{s['group']}</span>")
+                    b_parts.append(f"    <span style='color:{color_pct}'>{pct:.1f}%</span>")
+                    b_parts.append("  </div>")
+                    b_parts.append("  <div class='conf-bar-track'>")
+                    b_parts.append(f"    <div class='conf-bar-fill' style='width:{min(pct,100):.1f}%;background:{fill_color}'></div>")
+                    b_parts.append("  </div>")
+                    b_parts.append("</div>")
+                    bars_html += "".join(b_parts)
+                st.markdown(bars_html, unsafe_allow_html=True)
+                
+                st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
+                
+                # Export
+                report = {
+                    "variant": variant_name,
+                    "predicted_blood_group": predicted,
+                    "confidence_score": float(confidence),
+                    "processing_time_seconds": round(total_elapsed, 3),
+                    "model_architecture": breakdown.get('architecture','Unknown'),
+                    "can_donate_to": DONATE_TO.get(predicted,[]),
+                    "can_receive_from": RECEIVE_FROM.get(predicted,[]),
+                    "blood_group_fact": BG_FACTS.get(predicted,''),
+                    "all_scores": {s['group']: round(s['confidence']*100,2) for s in all_scores},
+                }
+                st.download_button("📄 JSON Report", json.dumps(
+                    report, indent=4), f"hematype_{variant_name}_report.json", "application/json", use_container_width=True, key=f"dl_{variant_name}")
 
-        st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
-
-        # ── Metrics ──────────────────────────────────────────────────
-        mc1, mc2, mc3, mc4 = st.columns(4)
-        metrics = [
-            (mc1, f"{confidence*100:.1f}%", "Confidence"),
-            (mc2, f"{elapsed:.2f}s", "Process Time"),
-            (mc3, "CNN" if active_model=='cnn' else "RF", "Model Type"),
-            (mc4, "8", "Blood Groups"),
-        ]
-        for col, val, lbl in metrics:
-            with col:
-                st.markdown(f"<div class='metric-card'><div class='metric-val'>{val}</div><div class='metric-lbl'>{lbl}</div></div>", unsafe_allow_html=True)
-
-        st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
-
-        # ── Confidence Bars ───────────────────────────────────────────
-        col_bar, col_prep = st.columns([1, 1])
-
-        with col_bar:
-            st.markdown("### 📊 Confidence Scores")
-            bars_html = ""
-            for s in all_scores:
-                pct = s['confidence'] * 100
-                is_top = s['group'] == predicted
-                fill_color = "linear-gradient(90deg,#e63946,#ff6b6b)" if is_top else "linear-gradient(90deg,#4361ee,#06d6a0)"
-                weight = "700" if is_top else "400"
-                bars_html += f"""
-                <div class='conf-bar-wrap'>
-                  <div class='conf-bar-label'><span style='font-weight:{weight};color:{'#fff' if is_top else '#7f8fa4'}'>{s['group']}</span><span style='color:{'#e63946' if is_top else '#7f8fa4'}'>{pct:.1f}%</span></div>
-                  <div class='conf-bar-track'><div class='conf-bar-fill' style='width:{min(pct,100):.1f}%;background:{fill_color}'></div></div>
-                </div>"""
-            st.markdown(bars_html, unsafe_allow_html=True)
-
-        with col_prep:
-            st.markdown("### 🔄 Preprocessing Steps")
-            try:
-                from utils.preprocessing import preprocess_fingerprint
-                steps = result.get('preprocessing_steps', {})
-                step_keys = [('original','Original'),('grayscale','Grayscale'),('denoised','Denoised'),('enhanced','CLAHE'),('thresholded','Binary')]
-                scols = st.columns(5)
-                for sc, (key, name) in zip(scols, step_keys):
-                    img = steps.get(key)
-                    if img is not None:
-                        disp = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) if len(img.shape)==3 else img
-                        sc.image(disp, use_container_width=True)
-                        sc.markdown(f"<div class='step-badge'><span>{name}</span></div>", unsafe_allow_html=True)
-            except Exception:
-                st.info("Preprocessing steps unavailable.")
-
-        st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
-
-        # ── Donation Info ─────────────────────────────────────────────
-        st.markdown("### 💉 Blood Compatibility")
-        dc1, dc2 = st.columns(2)
-        with dc1:
-            st.markdown("<p style='color:#7f8fa4;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.8rem'>Can Donate To</p>", unsafe_allow_html=True)
-            donate_html = "".join([f"<span style='display:inline-block;margin:.3rem;padding:.5rem 1.2rem;background:rgba(6,214,160,.15);border:1px solid rgba(6,214,160,.3);border-radius:12px;color:#06d6a0;font-weight:700;font-family:Space Grotesk,sans-serif'>{g}</span>" for g in DONATE_TO.get(predicted, [])])
-            st.markdown(f"<div style='animation:fadeUp .5s ease'>{donate_html}</div>", unsafe_allow_html=True)
-        with dc2:
-            st.markdown("<p style='color:#7f8fa4;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.8rem'>Can Receive From</p>", unsafe_allow_html=True)
-            recv_html = "".join([f"<span style='display:inline-block;margin:.3rem;padding:.5rem 1.2rem;background:rgba(67,97,238,.15);border:1px solid rgba(67,97,238,.3);border-radius:12px;color:#7da8ff;font-weight:700;font-family:Space Grotesk,sans-serif'>{g}</span>" for g in RECEIVE_FROM.get(predicted, [])])
-            st.markdown(f"<div style='animation:fadeUp .5s ease'>{recv_html}</div>", unsafe_allow_html=True)
-
-        st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
-
-        # ── Export ────────────────────────────────────────────────────
-        st.markdown("### 📥 Export Report")
-        report = {
-            "predicted_blood_group": predicted,
-            "confidence_score": float(confidence),
-            "processing_time_seconds": round(elapsed, 3),
-            "model_type": result.get('model_type','unknown'),
-            "model_architecture": breakdown.get('architecture','Unknown'),
-            "can_donate_to": DONATE_TO.get(predicted,[]),
-            "can_receive_from": RECEIVE_FROM.get(predicted,[]),
-            "blood_group_fact": BG_FACTS.get(predicted,''),
-            "all_scores": {s['group']: round(s['confidence']*100,2) for s in all_scores},
-        }
-        st.download_button("📄 Download Full Report (JSON)", json.dumps(report, indent=4), "hematype_report.json", "application/json", use_container_width=True)
 
     else:
         # ── Upload Prompt ─────────────────────────────────────────────
-        st.markdown("""
-        <div style='display:flex;align-items:center;justify-content:center;min-height:300px'>
-          <div class='glass' style='text-align:center;padding:4rem 3rem;max-width:480px;margin:2rem auto;animation:fadeUp .6s ease'>
-            <div style='font-size:4rem;margin-bottom:1rem;animation:heartbeat 1.8s ease-in-out infinite'>🖐️</div>
-            <h3 style='color:#fff;font-family:Space Grotesk,sans-serif;margin:.5rem 0'>Upload a Fingerprint</h3>
-            <p style='color:#7f8fa4;font-size:.9rem;line-height:1.6'>Use the sidebar to upload a fingerprint image (BMP, PNG, JPG) or select a sample image for a quick demo.</p>
-          </div>
-        </div>
-        """, unsafe_allow_html=True)
+        # ── Upload Prompt ─────────────────────────────────────────────
+        up_parts = [
+            "<div style='display:flex;align-items:center;justify-content:center;min-height:200px'>",
+            "  <div class='glass' style='text-align:center;padding:2.5rem;max-width:520px;margin:1rem auto;animation:fadeUp .6s ease'>",
+            "    <div style='font-size:3rem;margin-bottom:.5rem;color:#0071e3;'>📄</div>",
+            "    <h3 style='color:#1d1d1f;font-family:Inter,sans-serif;margin:.5rem 0'>Awaiting Scan</h3>",
+            "    <p style='color:#86868b;font-size:.95rem;line-height:1.4'>Use the upload box above to provide a patient fingerprint image.</p>",
+            "  </div>",
+            "</div>"
+        ]
+        st.markdown("\n".join(up_parts), unsafe_allow_html=True)
 
         st.markdown("### 🔬 How It Works")
         steps_info = [
-            ("📤","Upload","Upload a fingerprint image in BMP, PNG or JPG format from the sidebar"),
-            ("🔄","Preprocess","Image is resized to 224×224, denoised, CLAHE enhanced & normalized"),
-            ("🧠","CNN Inference","EfficientNet-B0 runs a forward pass through 7 MBConv stages on GPU"),
-            ("🩸","Predict","Softmax outputs confidence scores for all 8 blood group classes"),
+            ("📤", "Upload", "Upload a fingerprint image in BMP, PNG or JPG format"),
+            ("🔄", "Preprocess", "Image resized to 300×300, Gaussian blur, CLAHE enhanced"),
+            ("🧠", "CNN Inference", "EfficientNet-B3 runs a forward pass through MBConv stages"),
+            ("🩸", "Predict", "Softmax layer outputs confidence for all 8 blood groups"),
         ]
         cols = st.columns(4)
         for i, (col, (icon, title, desc)) in enumerate(zip(cols, steps_info)):
             with col:
-                st.markdown(f"""
-                <div class='glass' style='padding:1.8rem;text-align:center;min-height:200px;animation:fadeUp {.3+i*.1}s ease'>
-                  <div style='font-size:2.2rem;margin-bottom:.8rem'>{icon}</div>
-                  <h4 style='color:#fff;font-family:Space Grotesk,sans-serif;margin:.3rem 0'>{title}</h4>
-                  <p style='color:#7f8fa4;font-size:.82rem;line-height:1.5'>{desc}</p>
-                </div>""", unsafe_allow_html=True)
+                c_parts = [
+                    f"<div class='glass' style='padding:1.8rem;text-align:center;min-height:200px;animation:fadeUp {0.2+i*.1}s ease'>",
+                    f"  <div style='font-size:2.2rem;margin-bottom:.8rem'>{icon}</div>",
+                    f"  <h4 style='color:#1d1d1f;font-family:Inter,sans-serif;margin:.3rem 0;font-weight:600'>{title}</h4>",
+                    f"  <p style='color:#86868b;font-size:.85rem;line-height:1.4'>{desc}</p>",
+                    "</div>"
+                ]
+                st.markdown("\n".join(c_parts), unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
 #  PAGE: COMPATIBILITY CHECKER
 # ══════════════════════════════════════════════════════════════
 elif page == "🔄 Compatibility":
-    st.markdown("""
-    <div class='hero'>
-      <div class='blood-drop'>🔄</div>
-      <h1>Blood Type Compatibility</h1>
-      <p>Interactive blood group compatibility checker — find who you can donate to or receive from</p>
-    </div>""", unsafe_allow_html=True)
+    h_parts = [
+        "<div class='hero'>",
+        "  <div class='blood-drop'>🔄</div>",
+        "  <h1>Blood Type Compatibility</h1>",
+        "  <p>Interactive blood group compatibility checker — find who you can donate to or receive from</p>",
+        "</div>"
+    ]
+    st.markdown("\n".join(h_parts), unsafe_allow_html=True)
 
     sel_bg = st.selectbox("Select a Blood Group to explore:", BLOOD_GROUPS, key="compat_select")
 
     c1, c2 = st.columns(2)
     with c1:
-        st.markdown(f"""
-        <div class='glass' style='padding:2rem;'>
-          <h3 style='color:#06d6a0;font-family:Space Grotesk,sans-serif;margin-bottom:1.2rem'>💉 Can Donate To</h3>
-          {''.join([f"<div style='display:flex;align-items:center;gap:.8rem;padding:.8rem;margin:.4rem 0;background:rgba(6,214,160,.08);border:1px solid rgba(6,214,160,.2);border-radius:14px;transition:.2s'><span style='font-size:1.4rem;font-weight:900;font-family:Space Grotesk,sans-serif;color:#06d6a0;min-width:45px'>{g}</span><span style='color:#7f8fa4;font-size:.85rem'>{BLOOD_GROUP_INFO.get(g,'')[:60]}...</span></div>" for g in DONATE_TO.get(sel_bg,[])])}
-        </div>""", unsafe_allow_html=True)
+        donate_html = [
+            "<div class='glass' style='padding:2rem;'>",
+            "  <h3 style='color:#1d1d1f;font-family:Inter,sans-serif;margin-bottom:1.2rem'>💉 Can Donate To</h3>",
+            ''.join([f"<div class='pill-green'><span style='font-size:1.4rem;font-weight:800;color:#34c759;min-width:45px'>{g}</span><span style='color:#86868b;font-size:.85rem;line-height:1.4'>{BLOOD_GROUP_INFO.get(g,'')}</span></div>" for g in DONATE_TO.get(sel_bg,[])]),
+            "</div>"
+        ]
+        st.markdown("\n".join(donate_html), unsafe_allow_html=True)
 
     with c2:
-        st.markdown(f"""
-        <div class='glass' style='padding:2rem;'>
-          <h3 style='color:#4361ee;font-family:Space Grotesk,sans-serif;margin-bottom:1.2rem'>🩸 Can Receive From</h3>
-          {''.join([f"<div style='display:flex;align-items:center;gap:.8rem;padding:.8rem;margin:.4rem 0;background:rgba(67,97,238,.08);border:1px solid rgba(67,97,238,.2);border-radius:14px'><span style='font-size:1.4rem;font-weight:900;font-family:Space Grotesk,sans-serif;color:#7da8ff;min-width:45px'>{g}</span><span style='color:#7f8fa4;font-size:.85rem'>{BLOOD_GROUP_INFO.get(g,'')[:60]}...</span></div>" for g in RECEIVE_FROM.get(sel_bg,[])])}
-        </div>""", unsafe_allow_html=True)
+        receive_html = [
+            "<div class='glass' style='padding:2rem;'>",
+            "  <h3 style='color:#1d1d1f;font-family:Inter,sans-serif;margin-bottom:1.2rem'>🩸 Can Receive From</h3>",
+            ''.join([f"<div class='pill-blue'><span style='font-size:1.4rem;font-weight:800;color:#0071e3;min-width:45px'>{g}</span><span style='color:#86868b;font-size:.85rem;line-height:1.4'>{BLOOD_GROUP_INFO.get(g,'')}</span></div>" for g in RECEIVE_FROM.get(sel_bg,[])]),
+            "</div>"
+        ]
+        st.markdown("\n".join(receive_html), unsafe_allow_html=True)
 
     st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
     st.markdown("### 🗓️ Full Compatibility Matrix")
 
-    header = "<div class='compat-grid' style='margin-bottom:6px'><div></div>" + "".join(f"<div style='text-align:center;font-size:.7rem;color:#7f8fa4;font-weight:700'>{g}</div>" for g in BLOOD_GROUPS) + "</div>"
+    header = "<div class='cm-header'></div>" + "".join(f"<div class='cm-header'>{g}</div>" for g in BLOOD_GROUPS)
     rows = ""
     for donor in BLOOD_GROUPS:
-        rows += f"<div class='compat-grid' style='margin-bottom:6px'><div style='font-size:.7rem;color:#fff;font-weight:700;display:flex;align-items:center'>{donor}</div>"
+        rows += f"<div class='cm-row-header'>{donor}</div>"
         for recipient in BLOOD_GROUPS:
             can = recipient in DONATE_TO.get(donor, [])
-            rows += f"<div class='compat-cell {'can' if can else 'cannot'}'>{'✓' if can else '✗'}</div>"
-        rows += "</div>"
-    st.markdown(f"<div style='overflow-x:auto'>{header}{rows}</div>", unsafe_allow_html=True)
+            cls_name = "cm-can" if can else "cm-cannot"
+            icon = "✓" if can else "✕"
+            rows += f"<div class='cm-cell {cls_name}'>{icon}</div>"
+    
+    st.markdown(f"<div class='compat-matrix'>{header}{rows}</div>", unsafe_allow_html=True)
 
     st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
     st.markdown(f"<div class='info-box'>💡 <strong>About {sel_bg}:</strong> {BLOOD_GROUP_INFO.get(sel_bg,'')}</div>", unsafe_allow_html=True)
@@ -461,94 +376,149 @@ elif page == "🔄 Compatibility":
 #  PAGE: ARCHITECTURE
 # ══════════════════════════════════════════════════════════════
 elif page == "📊 Architecture":
-    st.markdown("""
-    <div class='hero'>
-      <div class='blood-drop'>📊</div>
-      <h1>System Architecture</h1>
-      <p>Technical overview of the HemaType AI pipeline — EfficientNet-B0 with GPU acceleration</p>
-    </div>""", unsafe_allow_html=True)
+    a_parts = [
+        "<div class='hero'>",
+        "  <div class='blood-drop'>📊</div>",
+        "  <h1>System Architecture</h1>",
+        "  <p>Technical overview of the HemaType AI pipeline — Dual-Model Architecture</p>",
+        "</div>"
+    ]
+    st.markdown("\n".join(a_parts), unsafe_allow_html=True)
 
-    st.markdown("### 🔄 CNN Pipeline")
-    st.code("""
-Input (BMP/PNG/JPG)  →  Preprocess (224×224, ImageNet Norm)
-   ↓
-EfficientNet-B0 Backbone (7 MBConv Stages, pretrained ImageNet)
-   ↓  GlobalAveragePooling  →  [1280]
-Custom Head:
-   Dropout(0.35) → Linear(1280→512) → BN → ReLU
-   Dropout(0.30) → Linear(512→256)  → BN → ReLU
-   Dropout(0.20) → Linear(256→8)
-   ↓  Softmax  →  Blood Group + Confidence Score
-    """, language="text")
+    st.markdown("### 🧠 Core Neural Network Pipeline")
+    
+    # Beautiful flow pipeline UI
+    pipeline_parts = [
+"<div style='background:#ffffff; border: 1px solid rgba(0,0,0,0.06); border-radius:24px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(0,0,0,0.02); margin-bottom: 2rem;'>",
+"<style>",
+".flow-node { padding: 1.2rem; border-radius: 16px; background: #fbfbfd; border: 1px solid #e5e5ea; display: flex; align-items: center; gap: 1.2rem; position: relative; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }",
+".flow-node:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,113,227,0.08); border-color: rgba(0,113,227,0.3); background:#ffffff;}",
+".flow-icon { font-size: 2.2rem; background: rgba(0,113,227,0.1); width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 16px; }",
+".flow-text h4 { margin: 0 0 0.2rem 0; color: #1d1d1f; font-weight: 700; font-family: \'Inter\', sans-serif; font-size:1.1rem;}",
+".flow-text p { margin: 0; color: #86868b; font-size: 0.9rem; line-height: 1.5; }",
+".flow-arrow { text-align: center; color: #d1d1d6; font-size: 1.5rem; padding: 0.5rem 0; animation: fadeUp 1s ease infinite alternate; }",
+".head-layer { font-family: monospace; font-size: 0.75rem; background: #f2f2f7; padding: 4px 8px; border-radius: 6px; color: #0071e3; margin-top: 6px; display: inline-block; }",
+"</style>",
+"<div class='flow-node'>",
+"    <div class='flow-icon'>📤</div>",
+"    <div class='flow-text'>",
+"        <h4>Input Phase (High-Resolution Fingerprint)</h4>",
+"        <p>Receives localized image streams mapped up to 300x300 pixels internally.</p>",
+"    </div>",
+"</div>",
+"<div class='flow-arrow'>⬇</div>",
+"<div class='flow-node'>",
+"    <div class='flow-icon'>🔄</div>",
+"    <div class='flow-text'>",
+"        <h4>Clinical Preprocessing Pipeline</h4>",
+"        <p>Translates image to Grayscale, executes CLAHE contrast enhancement, and Normalizes tensor means to ImageNet standard.</p>",
+"    </div>",
+"</div>",
+"<div class='flow-arrow'>⬇</div>",
+"<div class='flow-node'>",
+"    <div class='flow-icon'>📱</div>",
+"    <div class='flow-text'>",
+"        <h4>EfficientNet Backbones (B3 & B0)</h4>",
+"        <p>Parallel deep learning pathways extracting high-level semantic edge topologies using MBConv blocks. Yields dynamic Global Average Pooled vectors.</p>",
+"        <div class='head-layer'>GAP Output: 1536 Channels (B3) / 1280 Channels (B0)</div>",
+"    </div>",
+"</div>",
+"<div class='flow-arrow'>⬇</div>",
+"<div class='flow-node'>",
+"    <div class='flow-icon'>🧠</div>",
+"    <div class='flow-text'>",
+"        <h4>Linear Classification Head & Optimizer</h4>",
+"        <p>Aggressive layered dropout strategy preventing structural overfitting on biological scans.</p>",
+"        <div class='head-layer'>Dropout(0.35) → Linear(1536 to 512) → ReLU → Dropout(0.20) → Linear(256 to 8)</div>",
+"    </div>",
+"</div>",
+"<div class='flow-arrow'>⬇</div>",
+"<div class='flow-node' style='border-left: 6px solid #34c759; background:#ffffff;'>",
+"    <div class='flow-icon' style='background:rgba(52,199,89,0.15)'>🩸</div>",
+"    <div class='flow-text'>",
+"        <h4>Output State & Validation</h4>",
+"        <p>Softmax optimization mapping directly into the final 8 discrete ABO/Rh blood groups natively.</p>",
+"    </div>",
+"</div>",
+"</div>"
+    ]
+    st.markdown("".join(pipeline_parts), unsafe_allow_html=True)
 
     st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
+    st.markdown("### ⚡ Technology Stack & Modules")
 
     cols = st.columns(3)
     arch_cards = [
-        ("🔥 PyTorch 2.5", "Deep Learning", "CUDA 12.1, Mixed Precision FP16, AdamW optimizer"),
-        ("🏺 EfficientNet-B0", "CNN Backbone", "5.3M params, ImageNet pretrained, 7 MBConv stages"),
-        ("🔄 Data Augmentation", "Regularization", "Flip, Rotate±20°, ColorJitter, Perspective, Erasing"),
-        ("⚡ Mixed Precision", "GPU Training", "GradScaler + autocast for 2× speed on GTX 1660 Ti"),
-        ("📈 Cosine Annealing", "LR Schedule", "Warm restarts (T₀=20), eta_min=1e-6"),
-        ("🏋️ Progressive Unfreeze", "Fine-tuning", "Head-only (ep 1-5), Full model (ep 6+) for stability"),
+        ("🔥 PyTorch 2.5", "Framework", "Bleeding edge CUDA 12.1 operations, fully vectorized tensors, and AdamW optimizing."),
+        ("📱 Parametric B3 & B0", "Architecture", "Scaling from ~5.3M (B0) to ~12.2M (B3) parameters depending on accuracy requirements."),
+        ("🔄 Fluid Augmentation", "Resilience", "MixUp (α=0.2), RandomPerspective, and intense native ColorJittering against scanner variance."),
+        ("⚡ Tensor Cores", "Acceleration", "Native PyTorch AMP mapped explicitly to float16 reducing VRAM and doubling memory bus throughput."),
+        ("📈 Cosine Annealing", "Optimization", "Warm restarts for rapidly escaping local loss minima natively through epoch cyclical drops."),
+        ("🎛 Adaptive Drop", "Generalization", "Multi-Stage fully connected neural nodes isolating feature detection from direct rote memory."),
     ]
     for i, (col, (title, cat, desc)) in enumerate(zip(cols*2, arch_cards)):
         with col:
-            st.markdown(f"""<div class='glass' style='padding:1.5rem;margin-bottom:1rem;animation:fadeUp {.2+i*.1}s ease'>
-              <p style='color:#e63946;font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;margin:0'>{cat}</p>
-              <h4 style='color:#fff;font-family:Space Grotesk,sans-serif;margin:.4rem 0'>{title}</h4>
-              <p style='color:#7f8fa4;font-size:.82rem;line-height:1.5;margin:0'>{desc}</p>
+            st.markdown(f"""<div class='glass' style='padding:2rem;margin-bottom:1rem;min-height:190px;animation:fadeUp {.2+i*.1}s ease'>
+              <p style='display:inline-block;background:rgba(0,113,227,0.1);color:#0071e3;font-size:.7rem;padding: 4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin:0 0 1rem;font-weight:800'>{cat}</p>
+              <h4 style='color:#1d1d1f;font-family:Inter,sans-serif;margin:0 0 .5rem;font-size:1.15rem'>{title}</h4>
+              <p style='color:#86868b;font-size:.88rem;line-height:1.5;margin:0'>{desc}</p>
             </div>""", unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
 #  PAGE: ABOUT
 # ══════════════════════════════════════════════════════════════
 elif page == "ℹ️ About":
-    st.markdown("""
-    <div class='hero'>
-      <div class='blood-drop'>ℹ️</div>
-      <h1>About HemaType AI</h1>
-      <p>Non-invasive blood group detection using Deep Learning — a college research project</p>
-    </div>""", unsafe_allow_html=True)
+    st.markdown('''
+    <div class="hero" style="background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);">
+      <div class="blood-drop">✨</div>
+      <h1 style="color:#0071e3">HemaType AI v4.0</h1>
+      <p style="color:#1d1d1f; font-weight:600">The Future of Non-Invasive Blood Diagnostics</p>
+    </div>
+    ''', unsafe_allow_html=True)
 
-    a1, a2 = st.columns(2)
-    with a1:
-        st.markdown("""
-        <div class='glass' style='padding:2rem;'>
-          <h3 style='color:#fff;font-family:Space Grotesk,sans-serif'>📋 Project Overview</h3>
-          <p style='color:#7f8fa4;line-height:1.8;font-size:.9rem'>
-          This project detects blood groups from fingerprint images using <strong style='color:#e63946'>EfficientNet-B0</strong>, 
-          a state-of-the-art CNN architecture. Traditional blood group testing requires blood sampling, 
-          but our non-invasive approach uses only a fingerprint image — making testing faster, safer, and more accessible.
-          <br><br>
-          Trained on <strong style='color:#06d6a0'>7,470 real fingerprint images</strong> across 8 blood groups with 
-          GPU acceleration on NVIDIA GTX 1660 Ti using PyTorch 2.5 and CUDA 12.1.
-          </p>
-        </div>""", unsafe_allow_html=True)
-    with a2:
-        st.markdown("""
-        <div class='glass' style='padding:2rem;'>
-          <h3 style='color:#fff;font-family:Space Grotesk,sans-serif'>✨ Key Features</h3>
-          <div style='display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem'>
-            <div style='display:flex;align-items:center;gap:.8rem;color:#7f8fa4;font-size:.88rem'><span style='color:#e63946;font-size:1rem'>🧠</span> EfficientNet-B0 CNN (Transfer Learning)</div>
-            <div style='display:flex;align-items:center;gap:.8rem;color:#7f8fa4;font-size:.88rem'><span style='color:#06d6a0;font-size:1rem'>⚡</span> GPU + Mixed Precision FP16 Training</div>
-            <div style='display:flex;align-items:center;gap:.8rem;color:#7f8fa4;font-size:.88rem'><span style='color:#4361ee;font-size:1rem'>🔄</span> Progressive Backbone Unfreezing</div>
-            <div style='display:flex;align-items:center;gap:.8rem;color:#7f8fa4;font-size:.88rem'><span style='color:#ffd60a;font-size:1rem'>📊</span> Class-Weighted Loss for Imbalanced Data</div>
-            <div style='display:flex;align-items:center;gap:.8rem;color:#7f8fa4;font-size:.88rem'><span style='color:#e63946;font-size:1rem'>🔄</span> Interactive Compatibility Checker</div>
-            <div style='display:flex;align-items:center;gap:.8rem;color:#7f8fa4;font-size:.88rem'><span style='color:#06d6a0;font-size:1rem'>📥</span> JSON Report Export</div>
-            <div style='display:flex;align-items:center;gap:.8rem;color:#7f8fa4;font-size:.88rem'><span style='color:#4361ee;font-size:1rem'>🎨</span> Premium Glassmorphism UI</div>
-          </div>
-        </div>""", unsafe_allow_html=True)
+    st.markdown("### 🌟 Project Vision")
+    
+    about_cols = st.columns([1, 1])
+    with about_cols[0]:
+        st.markdown('''
+        <div class="glass" style="padding: 2.5rem; height: 100%;">
+            <h3 style="color:#1d1d1f; margin-top:0; border-bottom: 2px solid #f2f2f7; padding-bottom: 0.8rem; margin-bottom:1.5rem;">The Clinical Problem</h3>
+            <p style="color:#86868b; line-height: 1.6; font-size: 1.05rem;">
+                Traditional blood typing requires invasive phlebotomy (drawing blood), biochemical reagents, and laboratory processing time. This causes significant friction in emergency triage, remote health screening, and patient comfort.
+            </p>
+            <p style="color:#86868b; line-height: 1.6; font-size: 1.05rem;">
+                <strong>HemaType AI</strong> bypasses the needle entirely by identifying subtle, deep-dermal topographical correlations between fingerprint ridge patterns and ABO/Rh gene expression using extreme-scale Convolutional Neural Networks.
+            </p>
+        </div>
+        ''', unsafe_allow_html=True)
 
-    st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class='glass' style='padding:2rem;text-align:center;'>
-      <p style='color:#7f8fa4;font-size:.82rem;text-transform:uppercase;letter-spacing:2px'>References</p>
-      <p style='color:#7f8fa4;font-size:.85rem;line-height:2'>
-        Tan et al. (2019) — EfficientNet: Rethinking Model Scaling for CNNs  •  
-        PyTorch Documentation — Transfer Learning Tutorial  •  
-        Kaggle — Blood Group Fingerprint Dataset  •  
-        Krishna et al. — Fingerprint Blood Group Detection (GitHub)
-      </p>
-      <p style='color:#3d4b60;font-size:.78rem;margin-top:1rem'>🎓 Machine Learning Research Project · 2026</p>
-    </div>""", unsafe_allow_html=True)
+    with about_cols[1]:
+        st.markdown('''
+        <div class="glass" style="padding: 2.5rem; height: 100%;">
+            <h3 style="color:#1d1d1f; margin-top:0; border-bottom: 2px solid #f2f2f7; padding-bottom: 0.8rem; margin-bottom:1.5rem;">Core Features</h3>
+            <ul style="color:#86868b; line-height: 1.8; font-size: 1.05rem; padding-left: 1.2rem;">
+                <li><strong style="color:#34c759">Zero Biomaterial:</strong> Requires absolutely no chemical reagents.</li>
+                <li><strong style="color:#0071e3">Real-Time Inference:</strong> Processes sub-second analysis natively using PyTorch AMP acceleration.</li>
+                <li><strong style="color:#1d1d1f">Clinical Precision:</strong> Models leverage millions of synthetic and augmented parameters across dual-backbones (EfficientNet-B3/B0).</li>
+                <li><strong style="color:#ff3b30">Privacy First:</strong> Local tensor execution. No cloud patient data transmission required.</li>
+            </ul>
+        </div>
+        ''', unsafe_allow_html=True)
+
+    st.markdown("<div class='divider' style='margin: 3rem 0;'></div>", unsafe_allow_html=True)
+    st.markdown("### 🧑‍💻 Technical Foundations")
+
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("<div class='metric-card'><div class='metric-val'>PyTorch</div><div class='metric-lbl'>Core Framework</div></div>", unsafe_allow_html=True)
+    with col2:
+        st.markdown("<div class='metric-card'><div class='metric-val'>Streamlit</div><div class='metric-lbl'>UI Rendering</div></div>", unsafe_allow_html=True)
+    with col3:
+        st.markdown("<div class='metric-card'><div class='metric-val'>EfficientNet</div><div class='metric-lbl'>Biological Backbone</div></div>", unsafe_allow_html=True)
+
+    st.markdown('''
+    <div style="text-align:center; padding-top: 4rem; padding-bottom: 2rem;">
+        <p style="color:#d1d1d6; font-size: 0.85rem; font-weight: 500; font-family: monospace;">© 2026 HemaType AI Research Group • Built with deeply layered neural abstraction.</p>
+    </div>
+    ''', unsafe_allow_html=True)

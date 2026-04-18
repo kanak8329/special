@@ -59,3 +59,27 @@ desktop.ini
 tmp/
 temp/
 !data/dataset.zip
+
+
+# Security Keys & Credentials
+.env
+*.env
+.env.local
+.env.development
+
+
+# New App Data & Datasets
+data/augmented_dataset/
+data/balanced_dataset/
+model/saved_model/*.pth
+
+
+# Temporary Scripts & Refactoring files
+fix_*.py
+make_*.py
+inspect_models.py
+patch_app.py
+rename_models.py
+train_both.bat
+*_v3.py
+scripts/
