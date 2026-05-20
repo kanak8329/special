@@ -109,11 +109,14 @@ streamlit run app.py
 ```
 *The app is fully automated and manages dataset pointers directly upon launch at `http://localhost:8501`.*
 
-The app has **4 pages:**
-- **🔬 Detection** — Upload fingerprint → get blood group + confidence
-- **🔄 Compatibility** — Interactive blood type compatibility checker
-- **📊 Architecture** — Technical CNN pipeline diagram
-- **ℹ️ About** — Project overview & references
+The app features a **7-Slide Clinical Deck Interface:**
+- **Slide 0: Welcome** — Hero animation, project stats, and entry point
+- **Slide 1: Upload** — Drag & drop patient fingerprint or clinical sample library (Auto-advances)
+- **Slide 2: Scan Config** — Live scan overlay and neural backbone selector
+- **Slide 3: Diagnostic Report** — ABO/Rh classification, confidence metrics, and JSON export
+- **Slide 4: Compatibility** — 9x9 compatibility matrix and donor/recipient profiles
+- **Slide 5: Architecture** — Dual-CNN pipeline diagram and tech stack overview
+- **Slide 6: About** — System overview, clinical problem context, and references
 
 ---
 

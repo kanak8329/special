@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>/ — graphify tree viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      margin: 20px 0 0 24px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #1e3a56;
+    }
+    .controls {
+      margin: 20px 0 15px 24px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 8px 18px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    button:active {
+      background: #004085;
+    }
+    #tree-container {
+      width: calc(100vw - 48px); /* Adjust for body margin/padding */
+      height: 85vh;
+      overflow: auto;
+      border-radius: 8px;
+      background: #fff;
+      margin-left: 24px;
+      margin-right: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #ddd;
+    }
+    svg {
+      background: #fff;
+      border-radius: 8px;
+      display: block; /* Important for D3 */
+    }
+    .node circle {
+      stroke-width: 2.5px;
+    }
+    .node text { /* Base style for the <text> container */
+      font: 13px 'Segoe UI', sans-serif;
+      paint-order: stroke fill; /* Ensures text is readable over lines */
+      stroke: #fff; /* White halo */
+      stroke-width: 3px; /* Halo thickness */
+      stroke-linejoin: round;
+      stroke-opacity: 0.85; /* Halo opacity */
+    }
+    .link {
+      fill: none;
+      stroke-opacity: 0.7;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>/ — Knowledge Graph</h1>
+  <div class="controls">
+    <button onclick="expandAll()">Expand All</button>
+    <button onclick="collapseAll()">Collapse All</button>
+    <button onclick="resetView()">Reset View</button>
+  </div>
+  <div id="tree-container">
+    <svg id="tree-svg" width="6000" height="8000"></svg>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const initialJsonData = {"name":"/","total_count":148,"children":[{"name":"fix_arch_indent.py","total_count":1,"children":[{"name":"dedent_html()","total_count":1,"children":[]}]},{"name":"model","total_count":72,"children":[{"name":"blood_group_v3.py","total_count":18,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".forward()","total_count":1,"children":[]},{"name":"Blood Group Model V3 - Two-Stage Architecture ==================================","total_count":1,"children":[]},{"name":"CBAM","total_count":1,"children":[]},{"name":"CBAM-style spatial attention - focuses on important fingerprint regions.","total_count":1,"children":[]},{"name":"ChannelAttention","total_count":1,"children":[]},{"name":"Combined Channel + Spatial attention block (CBAM).","total_count":1,"children":[]},{"name":"combined_to_blood_group_idx()","total_count":1,"children":[]},{"name":"Convert full 8-class label tensor to (abo_labels, rh_labels).","total_count":1,"children":[]},{"name":"get_abo_rh_labels()","total_count":1,"children":[]},{"name":"Inference-only: returns final [B, 8] combined probabilities.","total_count":1,"children":[]},{"name":"load_v3_model()","total_count":1,"children":[]},{"name":"Map combined ABO*2+Rh index back to BLOOD_GROUPS index.","total_count":1,"children":[]},{"name":"Returns: (abo_logits, rh_logits, combined_probs)             abo_logits   : [B,","total_count":1,"children":[]},{"name":"save_v3_model()","total_count":1,"children":[]},{"name":"SENet-style channel attention - recalibrates feature map channels.","total_count":1,"children":[]},{"name":"SpatialAttention","total_count":1,"children":[]},{"name":"Two-Stage EfficientNet-B3 Blood Group Classifier.      Architecture:         Eff","total_count":1,"children":[]}]},{"name":"cnn_model.py","total_count":13,"children":[{"name":".count_parameters()","total_count":1,"children":[]},{"name":".get_probabilities()","total_count":1,"children":[]},{"name":"BloodGroupCNN","total_count":1,"children":[]},{"name":"CNN Model - Multi-Variant EfficientNet with Transfer Learning =================","total_count":1,"children":[]},{"name":"Count total trainable parameters.","total_count":1,"children":[]},{"name":"Forward pass returning softmax probabilities.","total_count":1,"children":[]},{"name":"get_inference_transform()","total_count":1,"children":[]},{"name":"Load trained CNN model from disk (by variant).","total_count":1,"children":[]},{"name":"load_cnn_model()","total_count":1,"children":[]},{"name":"Multi-variant EfficientNet with a custom deep classifier head,     optimized fo","total_count":1,"children":[]},{"name":"Returns inference transform for given variant (no augmentation).","total_count":1,"children":[]},{"name":"Save CNN model checkpoint with metadata.","total_count":1,"children":[]},{"name":"save_cnn_model()","total_count":1,"children":[]}]},{"name":"feature_extraction.py","total_count":7,"children":[{"name":"Extract complete feature vector from a preprocessed fingerprint image.     Comb","total_count":1,"children":[]},{"name":"Extract orientation features from fingerprint ridges.          Uses Sobel grad","total_count":1,"children":[]},{"name":"Extract wavelet features using 2D Discrete Wavelet Transform.          Decompo","total_count":1,"children":[]},{"name":"extract_all_features()","total_count":1,"children":[]},{"name":"extract_orientation_features()","total_count":1,"children":[]},{"name":"extract_wavelet_features()","total_count":1,"children":[]},{"name":"Feature Extraction Module ========================= Extracts features from pre","total_count":1,"children":[]}]},{"name":"predict.py","total_count":19,"children":[{"name":"_cnn_model_exists()","total_count":1,"children":[]},{"name":"_get_available_cnn_variants()","total_count":1,"children":[]},{"name":"_predict_cnn()","total_count":1,"children":[]},{"name":"_predict_rf()","total_count":1,"children":[]},{"name":"_rf_model_exists()","total_count":1,"children":[]},{"name":"Check if any CNN model file is present.","total_count":1,"children":[]},{"name":"Check if Random Forest model files are present.","total_count":1,"children":[]},{"name":"Check which CNN model variants are present.","total_count":1,"children":[]},{"name":"get_active_model_type()","total_count":1,"children":[]},{"name":"Load whichever model is available (CNN preferred).     Returns a tuple indicati","total_count":1,"children":[]},{"name":"load_model()","total_count":1,"children":[]},{"name":"Predict blood group from a fingerprint image.     If multiple CNN models exist,","total_count":1,"children":[]},{"name":"predict_blood_group()","total_count":1,"children":[]},{"name":"predict_from_features()","total_count":1,"children":[]},{"name":"Prediction Module — Dual Model Support =======================================","total_count":1,"children":[]},{"name":"Returns 'cnn_multi', 'cnn', 'rf', or 'none'.","total_count":1,"children":[]},{"name":"RF-only: Predict from pre-extracted features.","total_count":1,"children":[]},{"name":"Run inference using the CNN model.","total_count":1,"children":[]},{"name":"Run inference using the Random Forest model.","total_count":1,"children":[]}]},{"name":"train.py","total_count":3,"children":[{"name":"_generate_cnn_plots()","total_count":1,"children":[]},{"name":"Model Training Module - CLEAN BASELINE (Step 1) ===============================","total_count":1,"children":[]},{"name":"train_cnn()","total_count":1,"children":[]}]},{"name":"train_v3.py","total_count":11,"children":[{"name":"3-phase progressive unfreezing:       Phase 1 (ep 1-5)  : only classifier heads","total_count":1,"children":[]},{"name":"_save_plots()","total_count":1,"children":[]},{"name":"build_transforms()","total_count":1,"children":[]},{"name":"CutMix: paste rectangular patch from one image into another.","total_count":1,"children":[]},{"name":"cutmix_data()","total_count":1,"children":[]},{"name":"HemaType AI - V3 Ultimate Training Script ======================================","total_count":1,"children":[]},{"name":"mixed_loss()","total_count":1,"children":[]},{"name":"MixUp: blend two images and interpolate labels.","total_count":1,"children":[]},{"name":"mixup_data()","total_count":1,"children":[]},{"name":"set_phase()","total_count":1,"children":[]},{"name":"train_v3()","total_count":1,"children":[]}]},{"name":"__init__.py","total_count":1,"children":[]}]},{"name":"scripts","total_count":39,"children":[{"name":"post_training_save.py","total_count":1,"children":[{"name":"Post-training fix: 1. Model finished training (64 epochs, early stopped) 2. Best","total_count":1,"children":[]}]},{"name":"task1_overfit_check.py","total_count":2,"children":[{"name":"_analyze_accuracy_only()","total_count":1,"children":[]},{"name":"Task 1: Overfitting / Underfitting Diagnostic =================================","total_count":1,"children":[]}]},{"name":"task2_compatibility_check.py","total_count":2,"children":[{"name":"check()","total_count":1,"children":[]},{"name":"Task 2: Model Compatibility Check =================================== Verifies","total_count":1,"children":[]}]},{"name":"task3_model_upgrade.py","total_count":2,"children":[{"name":"compare_models()","total_count":1,"children":[]},{"name":"Task 3: Model Upgrade — EfficientNet-B0 -> B3 =================================","total_count":1,"children":[]}]},{"name":"task4_sample_audit.py","total_count":5,"children":[{"name":"Compute 80/10/10 train/val/test split.","total_count":1,"children":[]},{"name":"compute_splits()","total_count":1,"children":[]},{"name":"Count images per blood group in a base directory.","total_count":1,"children":[]},{"name":"count_images_in_dir()","total_count":1,"children":[]},{"name":"Task 4: Train/Test Sample Count Audit ====================================== C","total_count":1,"children":[]}]},{"name":"task5_dataset_clean.py","total_count":7,"children":[{"name":"Apply deterministic augmentation based on idx.","total_count":1,"children":[]},{"name":"augment_image()","total_count":1,"children":[]},{"name":"collect_valid_images()","total_count":1,"children":[]},{"name":"is_valid_image()","total_count":1,"children":[]},{"name":"Return list of valid image paths in a folder.","total_count":1,"children":[]},{"name":"Returns True if image can be read and is large enough.","total_count":1,"children":[]},{"name":"Task 5: Dataset Cleaning & Balancing ===================================== - R","total_count":1,"children":[]}]},{"name":"task6_train_high_accuracy.py","total_count":5,"children":[{"name":"Auto-select best available dataset for training.","total_count":1,"children":[]},{"name":"Patch train.py to support --model flag and advanced augmentation.","total_count":1,"children":[]},{"name":"patch_train_py()","total_count":1,"children":[]},{"name":"pick_best_dataset()","total_count":1,"children":[]},{"name":"Task 6: High-Accuracy Training Pipeline =======================================","total_count":1,"children":[]}]},{"name":"task7_model_test.py","total_count":11,"children":[{"name":"Build 8×8 confusion matrix from predictions.","total_count":1,"children":[]},{"name":"collect_images()","total_count":1,"children":[]},{"name":"compute_confusion()","total_count":1,"children":[]},{"name":"get_dataset_dir()","total_count":1,"children":[]},{"name":"main()","total_count":1,"children":[]},{"name":"Pick best available dataset for testing.","total_count":1,"children":[]},{"name":"Returns {blood_group: [image_paths]} from base_dir.","total_count":1,"children":[]},{"name":"Run predict_blood_group on a list of (path, true_label) tuples.","total_count":1,"children":[]},{"name":"run_batch_inference()","total_count":1,"children":[]},{"name":"save_confusion_matrix()","total_count":1,"children":[]},{"name":"Task 7: End-to-End Model Test ============================== Phase 1 — Small d","total_count":1,"children":[]}]},{"name":"check_progress.py","total_count":1,"children":[]},{"name":"deep_analysis.py","total_count":1,"children":[]},{"name":"estimate_time.py","total_count":1,"children":[]},{"name":"fix_encoding.py","total_count":1,"children":[]}]},{"name":"utils","total_count":28,"children":[{"name":"helpers.py","total_count":13,"children":[{"name":"Create directory if it doesn't exist.","total_count":1,"children":[]},{"name":"ensure_dir()","total_count":1,"children":[]},{"name":"Format confidence scores for display.          Args:         confidence_score","total_count":1,"children":[]},{"name":"format_confidence()","total_count":1,"children":[]},{"name":"Get the data directory path.","total_count":1,"children":[]},{"name":"Get the project root directory.","total_count":1,"children":[]},{"name":"Get the sample fingerprints directory path.","total_count":1,"children":[]},{"name":"Get the saved model directory path.","total_count":1,"children":[]},{"name":"get_data_dir()","total_count":1,"children":[]},{"name":"get_model_dir()","total_count":1,"children":[]},{"name":"get_project_root()","total_count":1,"children":[]},{"name":"get_sample_dir()","total_count":1,"children":[]},{"name":"Helper Utilities ================ Common helper functions used across the proj","total_count":1,"children":[]}]},{"name":"preprocessing.py","total_count":15,"children":[{"name":"Apply adaptive binary thresholding for ridge extraction.          Args:","total_count":1,"children":[]},{"name":"Apply CLAHE (Contrast Limited Adaptive Histogram Equalization)     for contrast","total_count":1,"children":[]},{"name":"Apply Gaussian blur for denoising.          Args:         image: numpy array","total_count":1,"children":[]},{"name":"apply_threshold()","total_count":1,"children":[]},{"name":"Convert image to grayscale.          Args:         image: numpy array (BGR or","total_count":1,"children":[]},{"name":"convert_to_grayscale()","total_count":1,"children":[]},{"name":"denoise_image()","total_count":1,"children":[]},{"name":"enhance_contrast()","total_count":1,"children":[]},{"name":"Fingerprint Image Preprocessing Module ======================================","total_count":1,"children":[]},{"name":"Full preprocessing pipeline for fingerprint images.          Args:         im","total_count":1,"children":[]},{"name":"Load image from file path or PIL Image object.          Args:         image_i","total_count":1,"children":[]},{"name":"load_image()","total_count":1,"children":[]},{"name":"preprocess_fingerprint()","total_count":1,"children":[]},{"name":"Resize image to standard dimensions.          Args:         image: numpy arra","total_count":1,"children":[]},{"name":"resize_image()","total_count":1,"children":[]}]}]},{"name":"app.py","total_count":1,"children":[]},{"name":"fix_app.py","total_count":1,"children":[]},{"name":"fix_app_ui.py","total_count":1,"children":[]},{"name":"inspect_models.py","total_count":1,"children":[]},{"name":"make_arch.py","total_count":1,"children":[]},{"name":"make_attractive.py","total_count":1,"children":[]},{"name":"patch_app.py","total_count":1,"children":[]},{"name":"rename_models.py","total_count":1,"children":[]}]};
+
+    function transformData(jsonData) {
+        // Helper function to recursively build the children structure
+        function processNode(node, parentL1StageName) {
+            let displayName = node.name;
+            // Append total_count if it exists and is not already in the name
+            if (node.total_count !== undefined) {
+                if (!/\(Total Count: \d+\)$/.test(displayName)) {
+                    displayName += ` (Total Count: ${node.total_count})`;
+                }
+            }
+
+            const newNode = { name: displayName };
+
+            if (parentL1StageName === "Root") {
+                 newNode.originalStageName = node.name;
+            } else {
+                newNode.originalStageName = parentL1StageName;
+            }
+
+            if (node.children && node.children.length > 0) {
+                const stageNameToPass = (parentL1StageName === "Root") ? node.name : parentL1StageName;
+                newNode.children = node.children.map(child => processNode(child, stageNameToPass));
+            }
+
+            return newNode;
+        }
+
+        let rootDisplayName = jsonData.name;
+        if (jsonData.total_count !== undefined && !/\(Total Count: \d+\)$/.test(rootDisplayName)) {
+            rootDisplayName += ` (Total Count: ${jsonData.total_count})`;
+        }
+
+        return {
+            name: rootDisplayName,
+            originalStageName: "Root",
+            children: (jsonData.children || []).map(child => processNode(child, "Root"))
+        };
+    }
+
+    const treeData = transformData(initialJsonData);
+
+    // Auto-populated phaseColors: every depth-1 child of the root gets
+    // a stable colour from a bigger palette so all top-level dirs are
+    // distinguishable.
+    const PALETTE = [
+      ["#3498DB","#2980B9","#AED6F1"], ["#2ECC71","#27AE60","#A9DFBF"],
+      ["#E74C3C","#C0392B","#F5B7B1"], ["#9B59B6","#8E44AD","#D7BDE2"],
+      ["#F39C12","#D68910","#FAD7A0"], ["#1ABC9C","#117864","#A2D9CE"],
+      ["#34495E","#1B2631","#ABB2B9"], ["#E67E22","#BA4A00","#F5CBA7"],
+      ["#16A085","#0E6655","#A2D9CE"], ["#D35400","#A04000","#EDBB99"],
+      ["#7F8C8D","#566573","#D5DBDB"], ["#C0392B","#7B241C","#F5B7B1"],
+      ["#2E86C1","#1B4F72","#A9CCE3"], ["#28B463","#196F3D","#A9DFBF"],
+      ["#AF7AC5","#6C3483","#D2B4DE"],
+    ];
+    const phaseColors = { "Root": { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+                          "Default": { fill: "#BDC3C7", stroke: "#95A5A6", collapsedFill: "#ECF0F1" } };
+    (initialJsonData.children || []).forEach((c, i) => {
+      const pal = PALETTE[i % PALETTE.length];
+      phaseColors[c.name] = { fill: pal[0], stroke: pal[1], collapsedFill: pal[2] };
+    });
+
+    const levelSpecificPalettes = {
+      0: { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+      2: { fill: "#6ab04c", stroke: "#508a38", collapsedFill: "#a3d391" },
+      3: { fill: "#f0932b", stroke: "#d0730f", collapsedFill: "#f6c07e" },
+      4: { fill: "#be2edd", stroke: "#a01cb3", collapsedFill: "#e08bf2" },
+      5: { fill: "#00a8ff", stroke: "#007ac1", collapsedFill: "#74d2ff" },
+      6: { fill: "#e55039", stroke: "#c23620", collapsedFill: "#f09a8d" },
+      default: { fill: "#747d8c", stroke: "#57606f", collapsedFill: "#a4b0be" }
+    };
+
+    const svgElement = d3.select("#tree-svg");
+    const initialSvgWidth = +svgElement.attr("width");
+    const initialSvgHeight = +svgElement.attr("height");
+    const margin = { top: 40, right: 120, bottom: 80, left: 450 };
+    let width = initialSvgWidth - margin.left - margin.right;
+    let height = initialSvgHeight - margin.top - margin.bottom;
+    const duration = 500;
+    let nodeCounter = 0;
+    const g = svgElement.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const treemap = d3.tree().nodeSize([40, 0]);
+    let rootNode = d3.hierarchy(treeData, d => d.children);
+    rootNode.x0 = 0;
+    rootNode.y0 = 0;
+
+    if (rootNode.children) {
+      rootNode.children.forEach(d_child => {
+        if (d_child.children) { collapseBranch(d_child); }
+      });
+    }
+    updateTree(rootNode);
+
+    function collapseBranch(d) { if (d.children) { d._children = d.children; d._children.forEach(collapseBranch); d.children = null; } }
+    function expandBranch(d) { if (d._children) { d.children = d._children; d._children = null; } if (d.children) { d.children.forEach(expandBranch); } }
+    window.expandAll = () => { expandBranch(rootNode); updateTree(rootNode); };
+    window.collapseAll = () => { if (rootNode.children) { rootNode.children.forEach(collapseBranch); } updateTree(rootNode); };
+    window.resetView = () => { if (rootNode.children) { rootNode.children.forEach(d_child => { if (d_child.children || d_child._children) { collapseBranch(d_child); } }); } if (rootNode._children && !rootNode.children) { rootNode.children = rootNode._children; rootNode._children = null; } updateTree(rootNode); };
+
+    function updateTree(source) {
+      const treeLayoutData = treemap(rootNode);
+      let nodes = treeLayoutData.descendants();
+      let links = treeLayoutData.descendants().slice(1);
+
+      let minX = 0;
+      let maxX = 0;
+      if (nodes.length > 0) {
+        minX = d3.min(nodes, d => d.x);
+        maxX = d3.max(nodes, d => d.x);
+      }
+
+      let neededHeight = Math.max(initialSvgHeight, maxX - minX + margin.top + margin.bottom + 100);
+      svgElement.transition().duration(duration / 2).attr("height", neededHeight);
+      g.transition().duration(duration / 2).attr("transform", `translate(${margin.left},${margin.top - minX + 40})`);
+
+      nodes.forEach(d => { d.y = d.depth * 400; }); // Adjust horizontal separation if needed
+
+      const node = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++nodeCounter));
+      const nodeEnter = node.enter().append('g')
+        .attr('class', d => "node" + (d.children || d._children ? " node--internal" : " node--leaf") + (d._children ? " _children" : ""))
+        .attr('transform', d => `translate(${source.y0},${source.x0})`)
+        .on('click', (event, d) => { if (d.children) { d._children = d.children; d.children = null; } else if (d._children) { d.children = d._children; d._children = null; } updateTree(d); })
+        .style('cursor', d => (d.children || d._children) ? 'pointer' : 'default');
+
+      nodeEnter.append('circle').attr('r', 1e-6);
+
+      nodeEnter.append('text')
+        .attr('dy', '.35em')
+        .attr('x', d => d.children || d._children ? -14 : 14)
+        .attr('text-anchor', d => d.children || d._children ? 'end' : 'start')
+        .style("fill-opacity", 1e-6)
+        .call(wrapText, 380);
+
+      const nodeUpdate = nodeEnter.merge(node);
+      nodeUpdate.transition().duration(duration)
+        .attr('transform', d => `translate(${d.y},${d.x})`)
+        .attr('class', d => "node" + (d.children ? " node--internal" : " node--leaf") + (d._children ? " node--internal _children" : ""));
+
+      nodeUpdate.select('circle').attr('r', 8.5)
+        .style('fill', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            if (d._children) return palette.collapsedFill;
+            if (d.children) return palette.fill;
+            return "#fff";
+        })
+        .style('stroke', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            return palette.stroke;
+        });
+      nodeUpdate.select('text').style("fill-opacity", 1).call(wrapText, 380);
+
+      const nodeExit = node.exit().transition().duration(duration).attr('transform', d => `translate(${source.y},${source.x})`).remove();
+      nodeExit.select('circle').attr('r', 1e-6);
+      nodeExit.select('text').style('fill-opacity', 1e-6);
+
+      const link = g.selectAll('path.link').data(links, d => d.id);
+      const linkEnter = link.enter().insert('path', "g").attr('class', 'link').attr('d', d => { const o = { x: source.x0, y: source.y0 }; return diagonal(o, o); });
+
+      linkEnter.merge(link).transition().duration(duration).attr('d', d => diagonal(d, d.parent))
+        .style('stroke', d => {
+            const sourceNode = d.parent;
+            if (!sourceNode) return phaseColors.Default.stroke;
+            const l1AncestorName = sourceNode.data.originalStageName;
+            const colorPalette = phaseColors[l1AncestorName] || phaseColors.Default;
+            return colorPalette.stroke;
+        });
+      link.exit().transition().duration(duration).attr('d', d => { const o = { x: source.x, y: source.y }; return diagonal(o, o); }).remove();
+      nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+    }
+
+    function diagonal(s, d) { return `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`; }
+
+    function wrapText(textElements, maxWidth) {
+        const textPartColors = {
+            name: '#343a40',
+            count: '#0056b3'
+        };
+        const countRegex = /(\s\(Total Count: \d+\))$/;
+
+        textElements.each(function () {
+            const textD3 = d3.select(this);
+            const originalNodeText = textD3.datum().data.name;
+            const x = parseFloat(textD3.attr("x") || 0);
+            const initialDy = textD3.attr("dy");
+            const textAnchor = textD3.attr("text-anchor");
+            const lineHeight = 1.1;
+
+            textD3.text(null);
+
+            let namePart = originalNodeText;
+            let countPartText = "";
+
+            const countMatch = originalNodeText.match(countRegex);
+            if (countMatch && originalNodeText.endsWith(countMatch[0])) {
+                namePart = originalNodeText.substring(0, originalNodeText.length - countMatch[0].length).trim();
+                countPartText = countMatch[0].trim();
+            }
+
+            const tokens = [];
+            namePart.split(/\s+/).filter(Boolean).forEach(word => {
+                tokens.push({ text: word, type: 'name' });
+            });
+            if (countPartText) {
+                tokens.push({ text: countPartText, type: 'count' });
+            }
+
+            if (tokens.length === 0 && originalNodeText) {
+                tokens.push({ text: originalNodeText, type: 'name' });
+            }
+
+            let currentTspan = textD3.append("tspan").attr("x", x).attr("dy", initialDy);
+            if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+
+            let lineTokens = [];
+
+            for (let i = 0; i < tokens.length; i++) {
+                const tokenObj = tokens[i];
+
+                lineTokens.push(tokenObj);
+                currentTspan.text(lineTokens.map(t => t.text).join(" "));
+
+                if (currentTspan.node().getComputedTextLength() > maxWidth && lineTokens.length > 1) {
+                    lineTokens.pop();
+
+                    currentTspan.text(null);
+                    lineTokens.forEach((prevToken, idx) => {
+                        currentTspan.append("tspan")
+                            .text((idx > 0 ? " " : "") + prevToken.text)
+                            .style("fill", textPartColors[prevToken.type] || textPartColors.name)
+                            .style("font-weight", prevToken.type === 'count' ? "bold" : "normal");
+                    });
+
+                    lineTokens = [tokenObj];
+                    currentTspan = textD3.append("tspan").attr("x", x).attr("dy", lineHeight + "em");
+                    if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+                }
+            }
+
+            currentTspan.text(null);
+            lineTokens.forEach((token, idx) => {
+                currentTspan.append("tspan")
+                    .text((idx > 0 ? " " : "") + token.text)
+                    .style("fill", textPartColors[token.type] || textPartColors.name)
+                    .style("font-weight", token.type === 'count' ? "bold" : "normal");
+            });
+
+            if (textD3.selectAll("tspan > tspan").empty() && textD3.select("tspan").text().length === 0 && originalNodeText) {
+                let t = textD3.select("tspan");
+                let displayText = originalNodeText;
+                t.text(displayText).style("fill", textPartColors.name);
+                if (t.node() && t.node().getComputedTextLength() > maxWidth && displayText.length > 20) {
+                    let estimatedChars = Math.floor(maxWidth / (t.node().getComputedTextLength()/displayText.length) );
+                    displayText = displayText.substring(0, Math.max(0, estimatedChars - 3)) + "...";
+                    t.text(displayText);
+                }
+            }
+        });
+    }
+  </script>
+</body>
+</html>

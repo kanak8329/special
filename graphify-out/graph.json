@@ -1,0 +1,3913 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "app.py",
+      "file_type": "code",
+      "source_file": "app.py",
+      "source_location": "L1",
+      "community": 9,
+      "norm_label": "app.py",
+      "id": "app_py"
+    },
+    {
+      "label": "fix_app.py",
+      "file_type": "code",
+      "source_file": "fix_app.py",
+      "source_location": "L1",
+      "community": 10,
+      "norm_label": "fix_app.py",
+      "id": "fix_app_py"
+    },
+    {
+      "label": "fix_app_ui.py",
+      "file_type": "code",
+      "source_file": "fix_app_ui.py",
+      "source_location": "L1",
+      "community": 11,
+      "norm_label": "fix_app_ui.py",
+      "id": "fix_app_ui_py"
+    },
+    {
+      "label": "fix_arch_indent.py",
+      "file_type": "code",
+      "source_file": "fix_arch_indent.py",
+      "source_location": "L1",
+      "community": 7,
+      "norm_label": "fix_arch_indent.py",
+      "id": "fix_arch_indent_py"
+    },
+    {
+      "label": "dedent_html()",
+      "file_type": "code",
+      "source_file": "fix_arch_indent.py",
+      "source_location": "L13",
+      "community": 7,
+      "norm_label": "dedent_html()",
+      "id": "collage_project_special_fix_arch_indent_dedent_html"
+    },
+    {
+      "label": "inspect_models.py",
+      "file_type": "code",
+      "source_file": "inspect_models.py",
+      "source_location": "L1",
+      "community": 12,
+      "norm_label": "inspect_models.py",
+      "id": "inspect_models_py"
+    },
+    {
+      "label": "make_arch.py",
+      "file_type": "code",
+      "source_file": "make_arch.py",
+      "source_location": "L1",
+      "community": 13,
+      "norm_label": "make_arch.py",
+      "id": "make_arch_py"
+    },
+    {
+      "label": "make_attractive.py",
+      "file_type": "code",
+      "source_file": "make_attractive.py",
+      "source_location": "L1",
+      "community": 14,
+      "norm_label": "make_attractive.py",
+      "id": "make_attractive_py"
+    },
+    {
+      "label": "patch_app.py",
+      "file_type": "code",
+      "source_file": "patch_app.py",
+      "source_location": "L1",
+      "community": 15,
+      "norm_label": "patch_app.py",
+      "id": "patch_app_py"
+    },
+    {
+      "label": "rename_models.py",
+      "file_type": "code",
+      "source_file": "rename_models.py",
+      "source_location": "L1",
+      "community": 16,
+      "norm_label": "rename_models.py",
+      "id": "rename_models_py"
+    },
+    {
+      "label": "blood_group_v3.py",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "blood_group_v3.py",
+      "id": "model_blood_group_v3_py"
+    },
+    {
+      "label": "ChannelAttention",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L55",
+      "community": 1,
+      "norm_label": "channelattention",
+      "id": "model_blood_group_v3_channelattention"
+    },
+    {
+      "label": "SpatialAttention",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L74",
+      "community": 1,
+      "norm_label": "spatialattention",
+      "id": "model_blood_group_v3_spatialattention"
+    },
+    {
+      "label": "CBAM",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L90",
+      "community": 1,
+      "norm_label": "cbam",
+      "id": "model_blood_group_v3_cbam"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L92",
+      "community": 1,
+      "norm_label": ".__init__()",
+      "id": "model_blood_group_v3_cbam_init"
+    },
+    {
+      "label": ".forward()",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L97",
+      "community": 1,
+      "norm_label": ".forward()",
+      "id": "model_blood_group_v3_cbam_forward"
+    },
+    {
+      "label": "get_abo_rh_labels()",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L207",
+      "community": 5,
+      "norm_label": "get_abo_rh_labels()",
+      "id": "model_blood_group_v3_get_abo_rh_labels"
+    },
+    {
+      "label": "combined_to_blood_group_idx()",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L219",
+      "community": 1,
+      "norm_label": "combined_to_blood_group_idx()",
+      "id": "model_blood_group_v3_combined_to_blood_group_idx"
+    },
+    {
+      "label": "save_v3_model()",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L227",
+      "community": 2,
+      "norm_label": "save_v3_model()",
+      "id": "model_blood_group_v3_save_v3_model"
+    },
+    {
+      "label": "load_v3_model()",
+      "file_type": "code",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L249",
+      "community": 1,
+      "norm_label": "load_v3_model()",
+      "id": "model_blood_group_v3_load_v3_model"
+    },
+    {
+      "label": "Blood Group Model V3 - Two-Stage Architecture ==================================",
+      "file_type": "rationale",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "blood group model v3 - two-stage architecture ==================================",
+      "id": "model_blood_group_v3_rationale_1"
+    },
+    {
+      "label": "SENet-style channel attention - recalibrates feature map channels.",
+      "file_type": "rationale",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L56",
+      "community": 1,
+      "norm_label": "senet-style channel attention - recalibrates feature map channels.",
+      "id": "model_blood_group_v3_rationale_56"
+    },
+    {
+      "label": "CBAM-style spatial attention - focuses on important fingerprint regions.",
+      "file_type": "rationale",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L75",
+      "community": 1,
+      "norm_label": "cbam-style spatial attention - focuses on important fingerprint regions.",
+      "id": "model_blood_group_v3_rationale_75"
+    },
+    {
+      "label": "Combined Channel + Spatial attention block (CBAM).",
+      "file_type": "rationale",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L91",
+      "community": 1,
+      "norm_label": "combined channel + spatial attention block (cbam).",
+      "id": "model_blood_group_v3_rationale_91"
+    },
+    {
+      "label": "Two-Stage EfficientNet-B3 Blood Group Classifier.      Architecture:         Eff",
+      "file_type": "rationale",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L106",
+      "community": 1,
+      "norm_label": "two-stage efficientnet-b3 blood group classifier.      architecture:         eff",
+      "id": "model_blood_group_v3_rationale_106"
+    },
+    {
+      "label": "Returns: (abo_logits, rh_logits, combined_probs)             abo_logits   : [B,",
+      "file_type": "rationale",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L170",
+      "community": 1,
+      "norm_label": "returns: (abo_logits, rh_logits, combined_probs)             abo_logits   : [b,",
+      "id": "model_blood_group_v3_rationale_170"
+    },
+    {
+      "label": "Inference-only: returns final [B, 8] combined probabilities.",
+      "file_type": "rationale",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L196",
+      "community": 1,
+      "norm_label": "inference-only: returns final [b, 8] combined probabilities.",
+      "id": "model_blood_group_v3_rationale_196"
+    },
+    {
+      "label": "Convert full 8-class label tensor to (abo_labels, rh_labels).",
+      "file_type": "rationale",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L208",
+      "community": 5,
+      "norm_label": "convert full 8-class label tensor to (abo_labels, rh_labels).",
+      "id": "model_blood_group_v3_rationale_208"
+    },
+    {
+      "label": "Map combined ABO*2+Rh index back to BLOOD_GROUPS index.",
+      "file_type": "rationale",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L220",
+      "community": 1,
+      "norm_label": "map combined abo*2+rh index back to blood_groups index.",
+      "id": "model_blood_group_v3_rationale_220"
+    },
+    {
+      "label": "cnn_model.py",
+      "file_type": "code",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "cnn_model.py",
+      "id": "model_cnn_model_py"
+    },
+    {
+      "label": "BloodGroupCNN",
+      "file_type": "code",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L37",
+      "community": 1,
+      "norm_label": "bloodgroupcnn",
+      "id": "model_cnn_model_bloodgroupcnn"
+    },
+    {
+      "label": ".get_probabilities()",
+      "file_type": "code",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L77",
+      "community": 1,
+      "norm_label": ".get_probabilities()",
+      "id": "model_cnn_model_bloodgroupcnn_get_probabilities"
+    },
+    {
+      "label": ".count_parameters()",
+      "file_type": "code",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L83",
+      "community": 2,
+      "norm_label": ".count_parameters()",
+      "id": "model_cnn_model_bloodgroupcnn_count_parameters"
+    },
+    {
+      "label": "save_cnn_model()",
+      "file_type": "code",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L88",
+      "community": 2,
+      "norm_label": "save_cnn_model()",
+      "id": "model_cnn_model_save_cnn_model"
+    },
+    {
+      "label": "load_cnn_model()",
+      "file_type": "code",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L110",
+      "community": 1,
+      "norm_label": "load_cnn_model()",
+      "id": "model_cnn_model_load_cnn_model"
+    },
+    {
+      "label": "get_inference_transform()",
+      "file_type": "code",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L147",
+      "community": 1,
+      "norm_label": "get_inference_transform()",
+      "id": "model_cnn_model_get_inference_transform"
+    },
+    {
+      "label": "CNN Model - Multi-Variant EfficientNet with Transfer Learning =================",
+      "file_type": "rationale",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L1",
+      "community": 1,
+      "norm_label": "cnn model - multi-variant efficientnet with transfer learning =================",
+      "id": "model_cnn_model_rationale_1"
+    },
+    {
+      "label": "Multi-variant EfficientNet with a custom deep classifier head,     optimized fo",
+      "file_type": "rationale",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L38",
+      "community": 1,
+      "norm_label": "multi-variant efficientnet with a custom deep classifier head,     optimized fo",
+      "id": "model_cnn_model_rationale_38"
+    },
+    {
+      "label": "Forward pass returning softmax probabilities.",
+      "file_type": "rationale",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L78",
+      "community": 1,
+      "norm_label": "forward pass returning softmax probabilities.",
+      "id": "model_cnn_model_rationale_78"
+    },
+    {
+      "label": "Count total trainable parameters.",
+      "file_type": "rationale",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L84",
+      "community": 2,
+      "norm_label": "count total trainable parameters.",
+      "id": "model_cnn_model_rationale_84"
+    },
+    {
+      "label": "Save CNN model checkpoint with metadata.",
+      "file_type": "rationale",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L89",
+      "community": 2,
+      "norm_label": "save cnn model checkpoint with metadata.",
+      "id": "model_cnn_model_rationale_89"
+    },
+    {
+      "label": "Load trained CNN model from disk (by variant).",
+      "file_type": "rationale",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L111",
+      "community": 1,
+      "norm_label": "load trained cnn model from disk (by variant).",
+      "id": "model_cnn_model_rationale_111"
+    },
+    {
+      "label": "Returns inference transform for given variant (no augmentation).",
+      "file_type": "rationale",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L148",
+      "community": 1,
+      "norm_label": "returns inference transform for given variant (no augmentation).",
+      "id": "model_cnn_model_rationale_148"
+    },
+    {
+      "label": "feature_extraction.py",
+      "file_type": "code",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L1",
+      "community": 6,
+      "norm_label": "feature_extraction.py",
+      "id": "model_feature_extraction_py"
+    },
+    {
+      "label": "extract_orientation_features()",
+      "file_type": "code",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L17",
+      "community": 6,
+      "norm_label": "extract_orientation_features()",
+      "id": "model_feature_extraction_extract_orientation_features"
+    },
+    {
+      "label": "extract_wavelet_features()",
+      "file_type": "code",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L94",
+      "community": 6,
+      "norm_label": "extract_wavelet_features()",
+      "id": "model_feature_extraction_extract_wavelet_features"
+    },
+    {
+      "label": "extract_all_features()",
+      "file_type": "code",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L144",
+      "community": 6,
+      "norm_label": "extract_all_features()",
+      "id": "model_feature_extraction_extract_all_features"
+    },
+    {
+      "label": "Feature Extraction Module ========================= Extracts features from pre",
+      "file_type": "rationale",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L1",
+      "community": 6,
+      "norm_label": "feature extraction module ========================= extracts features from pre",
+      "id": "model_feature_extraction_rationale_1"
+    },
+    {
+      "label": "Extract orientation features from fingerprint ridges.          Uses Sobel grad",
+      "file_type": "rationale",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L18",
+      "community": 6,
+      "norm_label": "extract orientation features from fingerprint ridges.          uses sobel grad",
+      "id": "model_feature_extraction_rationale_18"
+    },
+    {
+      "label": "Extract wavelet features using 2D Discrete Wavelet Transform.          Decompo",
+      "file_type": "rationale",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L95",
+      "community": 6,
+      "norm_label": "extract wavelet features using 2d discrete wavelet transform.          decompo",
+      "id": "model_feature_extraction_rationale_95"
+    },
+    {
+      "label": "Extract complete feature vector from a preprocessed fingerprint image.     Comb",
+      "file_type": "rationale",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L145",
+      "community": 6,
+      "norm_label": "extract complete feature vector from a preprocessed fingerprint image.     comb",
+      "id": "model_feature_extraction_rationale_145"
+    },
+    {
+      "label": "predict.py",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "predict.py",
+      "id": "model_predict_py"
+    },
+    {
+      "label": "_get_available_cnn_variants()",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L28",
+      "community": 3,
+      "norm_label": "_get_available_cnn_variants()",
+      "id": "model_predict_get_available_cnn_variants"
+    },
+    {
+      "label": "_cnn_model_exists()",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L37",
+      "community": 3,
+      "norm_label": "_cnn_model_exists()",
+      "id": "model_predict_cnn_model_exists"
+    },
+    {
+      "label": "_rf_model_exists()",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L41",
+      "community": 3,
+      "norm_label": "_rf_model_exists()",
+      "id": "model_predict_rf_model_exists"
+    },
+    {
+      "label": "get_active_model_type()",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L48",
+      "community": 3,
+      "norm_label": "get_active_model_type()",
+      "id": "model_predict_get_active_model_type"
+    },
+    {
+      "label": "load_model()",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L62",
+      "community": 3,
+      "norm_label": "load_model()",
+      "id": "model_predict_load_model"
+    },
+    {
+      "label": "predict_blood_group()",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L86",
+      "community": 3,
+      "norm_label": "predict_blood_group()",
+      "id": "model_predict_predict_blood_group"
+    },
+    {
+      "label": "_predict_cnn()",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L124",
+      "community": 1,
+      "norm_label": "_predict_cnn()",
+      "id": "model_predict_predict_cnn"
+    },
+    {
+      "label": "_predict_rf()",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L193",
+      "community": 3,
+      "norm_label": "_predict_rf()",
+      "id": "model_predict_predict_rf"
+    },
+    {
+      "label": "predict_from_features()",
+      "file_type": "code",
+      "source_file": "model/predict.py",
+      "source_location": "L233",
+      "community": 2,
+      "norm_label": "predict_from_features()",
+      "id": "model_predict_predict_from_features"
+    },
+    {
+      "label": "Prediction Module \u2014 Dual Model Support =======================================",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L1",
+      "community": 3,
+      "norm_label": "prediction module \u2014 dual model support =======================================",
+      "id": "model_predict_rationale_1"
+    },
+    {
+      "label": "Check which CNN model variants are present.",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L29",
+      "community": 3,
+      "norm_label": "check which cnn model variants are present.",
+      "id": "model_predict_rationale_29"
+    },
+    {
+      "label": "Check if any CNN model file is present.",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L38",
+      "community": 3,
+      "norm_label": "check if any cnn model file is present.",
+      "id": "model_predict_rationale_38"
+    },
+    {
+      "label": "Check if Random Forest model files are present.",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L42",
+      "community": 3,
+      "norm_label": "check if random forest model files are present.",
+      "id": "model_predict_rationale_42"
+    },
+    {
+      "label": "Returns 'cnn_multi', 'cnn', 'rf', or 'none'.",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L49",
+      "community": 3,
+      "norm_label": "returns 'cnn_multi', 'cnn', 'rf', or 'none'.",
+      "id": "model_predict_rationale_49"
+    },
+    {
+      "label": "Load whichever model is available (CNN preferred).     Returns a tuple indicati",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L63",
+      "community": 3,
+      "norm_label": "load whichever model is available (cnn preferred).     returns a tuple indicati",
+      "id": "model_predict_rationale_63"
+    },
+    {
+      "label": "Predict blood group from a fingerprint image.     If multiple CNN models exist,",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L87",
+      "community": 3,
+      "norm_label": "predict blood group from a fingerprint image.     if multiple cnn models exist,",
+      "id": "model_predict_rationale_87"
+    },
+    {
+      "label": "Run inference using the CNN model.",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L125",
+      "community": 1,
+      "norm_label": "run inference using the cnn model.",
+      "id": "model_predict_rationale_125"
+    },
+    {
+      "label": "Run inference using the Random Forest model.",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L194",
+      "community": 3,
+      "norm_label": "run inference using the random forest model.",
+      "id": "model_predict_rationale_194"
+    },
+    {
+      "label": "RF-only: Predict from pre-extracted features.",
+      "file_type": "rationale",
+      "source_file": "model/predict.py",
+      "source_location": "L234",
+      "community": 2,
+      "norm_label": "rf-only: predict from pre-extracted features.",
+      "id": "model_predict_rationale_234"
+    },
+    {
+      "label": "train.py",
+      "file_type": "code",
+      "source_file": "model/train.py",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "train.py",
+      "id": "model_train_py"
+    },
+    {
+      "label": "_generate_cnn_plots()",
+      "file_type": "code",
+      "source_file": "model/train.py",
+      "source_location": "L28",
+      "community": 2,
+      "norm_label": "_generate_cnn_plots()",
+      "id": "model_train_generate_cnn_plots"
+    },
+    {
+      "label": "train_cnn()",
+      "file_type": "code",
+      "source_file": "model/train.py",
+      "source_location": "L73",
+      "community": 2,
+      "norm_label": "train_cnn()",
+      "id": "model_train_train_cnn"
+    },
+    {
+      "label": "Model Training Module - CLEAN BASELINE (Step 1) ===============================",
+      "file_type": "rationale",
+      "source_file": "model/train.py",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "model training module - clean baseline (step 1) ===============================",
+      "id": "model_train_rationale_1"
+    },
+    {
+      "label": "train_v3.py",
+      "file_type": "code",
+      "source_file": "model/train_v3.py",
+      "source_location": "L1",
+      "community": 5,
+      "norm_label": "train_v3.py",
+      "id": "model_train_v3_py"
+    },
+    {
+      "label": "build_transforms()",
+      "file_type": "code",
+      "source_file": "model/train_v3.py",
+      "source_location": "L56",
+      "community": 5,
+      "norm_label": "build_transforms()",
+      "id": "model_train_v3_build_transforms"
+    },
+    {
+      "label": "mixup_data()",
+      "file_type": "code",
+      "source_file": "model/train_v3.py",
+      "source_location": "L87",
+      "community": 5,
+      "norm_label": "mixup_data()",
+      "id": "model_train_v3_mixup_data"
+    },
+    {
+      "label": "cutmix_data()",
+      "file_type": "code",
+      "source_file": "model/train_v3.py",
+      "source_location": "L99",
+      "community": 5,
+      "norm_label": "cutmix_data()",
+      "id": "model_train_v3_cutmix_data"
+    },
+    {
+      "label": "mixed_loss()",
+      "file_type": "code",
+      "source_file": "model/train_v3.py",
+      "source_location": "L123",
+      "community": 5,
+      "norm_label": "mixed_loss()",
+      "id": "model_train_v3_mixed_loss"
+    },
+    {
+      "label": "set_phase()",
+      "file_type": "code",
+      "source_file": "model/train_v3.py",
+      "source_location": "L129",
+      "community": 5,
+      "norm_label": "set_phase()",
+      "id": "model_train_v3_set_phase"
+    },
+    {
+      "label": "train_v3()",
+      "file_type": "code",
+      "source_file": "model/train_v3.py",
+      "source_location": "L198",
+      "community": 5,
+      "norm_label": "train_v3()",
+      "id": "model_train_v3_train_v3"
+    },
+    {
+      "label": "_save_plots()",
+      "file_type": "code",
+      "source_file": "model/train_v3.py",
+      "source_location": "L568",
+      "community": 5,
+      "norm_label": "_save_plots()",
+      "id": "model_train_v3_save_plots"
+    },
+    {
+      "label": "HemaType AI - V3 Ultimate Training Script ======================================",
+      "file_type": "rationale",
+      "source_file": "model/train_v3.py",
+      "source_location": "L1",
+      "community": 5,
+      "norm_label": "hematype ai - v3 ultimate training script ======================================",
+      "id": "model_train_v3_rationale_1"
+    },
+    {
+      "label": "MixUp: blend two images and interpolate labels.",
+      "file_type": "rationale",
+      "source_file": "model/train_v3.py",
+      "source_location": "L88",
+      "community": 5,
+      "norm_label": "mixup: blend two images and interpolate labels.",
+      "id": "model_train_v3_rationale_88"
+    },
+    {
+      "label": "CutMix: paste rectangular patch from one image into another.",
+      "file_type": "rationale",
+      "source_file": "model/train_v3.py",
+      "source_location": "L100",
+      "community": 5,
+      "norm_label": "cutmix: paste rectangular patch from one image into another.",
+      "id": "model_train_v3_rationale_100"
+    },
+    {
+      "label": "3-phase progressive unfreezing:       Phase 1 (ep 1-5)  : only classifier heads",
+      "file_type": "rationale",
+      "source_file": "model/train_v3.py",
+      "source_location": "L130",
+      "community": 5,
+      "norm_label": "3-phase progressive unfreezing:       phase 1 (ep 1-5)  : only classifier heads",
+      "id": "model_train_v3_rationale_130"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "model/__init__.py",
+      "source_location": "L1",
+      "community": 17,
+      "norm_label": "__init__.py",
+      "id": "model_init_py"
+    },
+    {
+      "label": "check_progress.py",
+      "file_type": "code",
+      "source_file": "scripts/check_progress.py",
+      "source_location": "L1",
+      "community": 18,
+      "norm_label": "check_progress.py",
+      "id": "scripts_check_progress_py"
+    },
+    {
+      "label": "deep_analysis.py",
+      "file_type": "code",
+      "source_file": "scripts/deep_analysis.py",
+      "source_location": "L1",
+      "community": 19,
+      "norm_label": "deep_analysis.py",
+      "id": "scripts_deep_analysis_py"
+    },
+    {
+      "label": "estimate_time.py",
+      "file_type": "code",
+      "source_file": "scripts/estimate_time.py",
+      "source_location": "L1",
+      "community": 20,
+      "norm_label": "estimate_time.py",
+      "id": "scripts_estimate_time_py"
+    },
+    {
+      "label": "fix_encoding.py",
+      "file_type": "code",
+      "source_file": "scripts/fix_encoding.py",
+      "source_location": "L1",
+      "community": 21,
+      "norm_label": "fix_encoding.py",
+      "id": "scripts_fix_encoding_py"
+    },
+    {
+      "label": "post_training_save.py",
+      "file_type": "code",
+      "source_file": "scripts/post_training_save.py",
+      "source_location": "L1",
+      "community": 8,
+      "norm_label": "post_training_save.py",
+      "id": "scripts_post_training_save_py"
+    },
+    {
+      "label": "Post-training fix: 1. Model finished training (64 epochs, early stopped) 2. Best",
+      "file_type": "rationale",
+      "source_file": "scripts/post_training_save.py",
+      "source_location": "L1",
+      "community": 8,
+      "norm_label": "post-training fix: 1. model finished training (64 epochs, early stopped) 2. best",
+      "id": "scripts_post_training_save_rationale_1"
+    },
+    {
+      "label": "task1_overfit_check.py",
+      "file_type": "code",
+      "source_file": "scripts/task1_overfit_check.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task1_overfit_check.py",
+      "id": "scripts_task1_overfit_check_py"
+    },
+    {
+      "label": "_analyze_accuracy_only()",
+      "file_type": "code",
+      "source_file": "scripts/task1_overfit_check.py",
+      "source_location": "L161",
+      "community": 0,
+      "norm_label": "_analyze_accuracy_only()",
+      "id": "scripts_task1_overfit_check_analyze_accuracy_only"
+    },
+    {
+      "label": "Task 1: Overfitting / Underfitting Diagnostic =================================",
+      "file_type": "rationale",
+      "source_file": "scripts/task1_overfit_check.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task 1: overfitting / underfitting diagnostic =================================",
+      "id": "scripts_task1_overfit_check_rationale_1"
+    },
+    {
+      "label": "task2_compatibility_check.py",
+      "file_type": "code",
+      "source_file": "scripts/task2_compatibility_check.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task2_compatibility_check.py",
+      "id": "scripts_task2_compatibility_check_py"
+    },
+    {
+      "label": "check()",
+      "file_type": "code",
+      "source_file": "scripts/task2_compatibility_check.py",
+      "source_location": "L24",
+      "community": 0,
+      "norm_label": "check()",
+      "id": "scripts_task2_compatibility_check_check"
+    },
+    {
+      "label": "Task 2: Model Compatibility Check =================================== Verifies",
+      "file_type": "rationale",
+      "source_file": "scripts/task2_compatibility_check.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task 2: model compatibility check =================================== verifies",
+      "id": "scripts_task2_compatibility_check_rationale_1"
+    },
+    {
+      "label": "task3_model_upgrade.py",
+      "file_type": "code",
+      "source_file": "scripts/task3_model_upgrade.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task3_model_upgrade.py",
+      "id": "scripts_task3_model_upgrade_py"
+    },
+    {
+      "label": "compare_models()",
+      "file_type": "code",
+      "source_file": "scripts/task3_model_upgrade.py",
+      "source_location": "L19",
+      "community": 0,
+      "norm_label": "compare_models()",
+      "id": "scripts_task3_model_upgrade_compare_models"
+    },
+    {
+      "label": "Task 3: Model Upgrade \u2014 EfficientNet-B0 -> B3 =================================",
+      "file_type": "rationale",
+      "source_file": "scripts/task3_model_upgrade.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task 3: model upgrade \u2014 efficientnet-b0 -> b3 =================================",
+      "id": "scripts_task3_model_upgrade_rationale_1"
+    },
+    {
+      "label": "task4_sample_audit.py",
+      "file_type": "code",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task4_sample_audit.py",
+      "id": "scripts_task4_sample_audit_py"
+    },
+    {
+      "label": "count_images_in_dir()",
+      "file_type": "code",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L32",
+      "community": 0,
+      "norm_label": "count_images_in_dir()",
+      "id": "scripts_task4_sample_audit_count_images_in_dir"
+    },
+    {
+      "label": "compute_splits()",
+      "file_type": "code",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L55",
+      "community": 0,
+      "norm_label": "compute_splits()",
+      "id": "scripts_task4_sample_audit_compute_splits"
+    },
+    {
+      "label": "Task 4: Train/Test Sample Count Audit ====================================== C",
+      "file_type": "rationale",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task 4: train/test sample count audit ====================================== c",
+      "id": "scripts_task4_sample_audit_rationale_1"
+    },
+    {
+      "label": "Count images per blood group in a base directory.",
+      "file_type": "rationale",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L33",
+      "community": 0,
+      "norm_label": "count images per blood group in a base directory.",
+      "id": "scripts_task4_sample_audit_rationale_33"
+    },
+    {
+      "label": "Compute 80/10/10 train/val/test split.",
+      "file_type": "rationale",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L56",
+      "community": 0,
+      "norm_label": "compute 80/10/10 train/val/test split.",
+      "id": "scripts_task4_sample_audit_rationale_56"
+    },
+    {
+      "label": "task5_dataset_clean.py",
+      "file_type": "code",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task5_dataset_clean.py",
+      "id": "scripts_task5_dataset_clean_py"
+    },
+    {
+      "label": "is_valid_image()",
+      "file_type": "code",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L38",
+      "community": 0,
+      "norm_label": "is_valid_image()",
+      "id": "scripts_task5_dataset_clean_is_valid_image"
+    },
+    {
+      "label": "augment_image()",
+      "file_type": "code",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L50",
+      "community": 0,
+      "norm_label": "augment_image()",
+      "id": "scripts_task5_dataset_clean_augment_image"
+    },
+    {
+      "label": "collect_valid_images()",
+      "file_type": "code",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L93",
+      "community": 0,
+      "norm_label": "collect_valid_images()",
+      "id": "scripts_task5_dataset_clean_collect_valid_images"
+    },
+    {
+      "label": "Task 5: Dataset Cleaning & Balancing ===================================== - R",
+      "file_type": "rationale",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task 5: dataset cleaning & balancing ===================================== - r",
+      "id": "scripts_task5_dataset_clean_rationale_1"
+    },
+    {
+      "label": "Returns True if image can be read and is large enough.",
+      "file_type": "rationale",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L39",
+      "community": 0,
+      "norm_label": "returns true if image can be read and is large enough.",
+      "id": "scripts_task5_dataset_clean_rationale_39"
+    },
+    {
+      "label": "Apply deterministic augmentation based on idx.",
+      "file_type": "rationale",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L51",
+      "community": 0,
+      "norm_label": "apply deterministic augmentation based on idx.",
+      "id": "scripts_task5_dataset_clean_rationale_51"
+    },
+    {
+      "label": "Return list of valid image paths in a folder.",
+      "file_type": "rationale",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L94",
+      "community": 0,
+      "norm_label": "return list of valid image paths in a folder.",
+      "id": "scripts_task5_dataset_clean_rationale_94"
+    },
+    {
+      "label": "task6_train_high_accuracy.py",
+      "file_type": "code",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task6_train_high_accuracy.py",
+      "id": "scripts_task6_train_high_accuracy_py"
+    },
+    {
+      "label": "pick_best_dataset()",
+      "file_type": "code",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L29",
+      "community": 0,
+      "norm_label": "pick_best_dataset()",
+      "id": "scripts_task6_train_high_accuracy_pick_best_dataset"
+    },
+    {
+      "label": "patch_train_py()",
+      "file_type": "code",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L50",
+      "community": 0,
+      "norm_label": "patch_train_py()",
+      "id": "scripts_task6_train_high_accuracy_patch_train_py"
+    },
+    {
+      "label": "Task 6: High-Accuracy Training Pipeline =======================================",
+      "file_type": "rationale",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task 6: high-accuracy training pipeline =======================================",
+      "id": "scripts_task6_train_high_accuracy_rationale_1"
+    },
+    {
+      "label": "Auto-select best available dataset for training.",
+      "file_type": "rationale",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L30",
+      "community": 0,
+      "norm_label": "auto-select best available dataset for training.",
+      "id": "scripts_task6_train_high_accuracy_rationale_30"
+    },
+    {
+      "label": "Patch train.py to support --model flag and advanced augmentation.",
+      "file_type": "rationale",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L51",
+      "community": 0,
+      "norm_label": "patch train.py to support --model flag and advanced augmentation.",
+      "id": "scripts_task6_train_high_accuracy_rationale_51"
+    },
+    {
+      "label": "task7_model_test.py",
+      "file_type": "code",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task7_model_test.py",
+      "id": "scripts_task7_model_test_py"
+    },
+    {
+      "label": "get_dataset_dir()",
+      "file_type": "code",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L33",
+      "community": 0,
+      "norm_label": "get_dataset_dir()",
+      "id": "scripts_task7_model_test_get_dataset_dir"
+    },
+    {
+      "label": "collect_images()",
+      "file_type": "code",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L46",
+      "community": 0,
+      "norm_label": "collect_images()",
+      "id": "scripts_task7_model_test_collect_images"
+    },
+    {
+      "label": "run_batch_inference()",
+      "file_type": "code",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L67",
+      "community": 0,
+      "norm_label": "run_batch_inference()",
+      "id": "scripts_task7_model_test_run_batch_inference"
+    },
+    {
+      "label": "compute_confusion()",
+      "file_type": "code",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L92",
+      "community": 0,
+      "norm_label": "compute_confusion()",
+      "id": "scripts_task7_model_test_compute_confusion"
+    },
+    {
+      "label": "save_confusion_matrix()",
+      "file_type": "code",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L103",
+      "community": 0,
+      "norm_label": "save_confusion_matrix()",
+      "id": "scripts_task7_model_test_save_confusion_matrix"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L121",
+      "community": 0,
+      "norm_label": "main()",
+      "id": "scripts_task7_model_test_main"
+    },
+    {
+      "label": "Task 7: End-to-End Model Test ============================== Phase 1 \u2014 Small d",
+      "file_type": "rationale",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L1",
+      "community": 0,
+      "norm_label": "task 7: end-to-end model test ============================== phase 1 \u2014 small d",
+      "id": "scripts_task7_model_test_rationale_1"
+    },
+    {
+      "label": "Pick best available dataset for testing.",
+      "file_type": "rationale",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L34",
+      "community": 0,
+      "norm_label": "pick best available dataset for testing.",
+      "id": "scripts_task7_model_test_rationale_34"
+    },
+    {
+      "label": "Returns {blood_group: [image_paths]} from base_dir.",
+      "file_type": "rationale",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L47",
+      "community": 0,
+      "norm_label": "returns {blood_group: [image_paths]} from base_dir.",
+      "id": "scripts_task7_model_test_rationale_47"
+    },
+    {
+      "label": "Run predict_blood_group on a list of (path, true_label) tuples.",
+      "file_type": "rationale",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L68",
+      "community": 0,
+      "norm_label": "run predict_blood_group on a list of (path, true_label) tuples.",
+      "id": "scripts_task7_model_test_rationale_68"
+    },
+    {
+      "label": "Build 8\u00d78 confusion matrix from predictions.",
+      "file_type": "rationale",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L93",
+      "community": 0,
+      "norm_label": "build 8\u00d78 confusion matrix from predictions.",
+      "id": "scripts_task7_model_test_rationale_93"
+    },
+    {
+      "label": "helpers.py",
+      "file_type": "code",
+      "source_file": "utils/helpers.py",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "helpers.py",
+      "id": "utils_helpers_py"
+    },
+    {
+      "label": "get_project_root()",
+      "file_type": "code",
+      "source_file": "utils/helpers.py",
+      "source_location": "L39",
+      "community": 2,
+      "norm_label": "get_project_root()",
+      "id": "utils_helpers_get_project_root"
+    },
+    {
+      "label": "get_model_dir()",
+      "file_type": "code",
+      "source_file": "utils/helpers.py",
+      "source_location": "L44",
+      "community": 2,
+      "norm_label": "get_model_dir()",
+      "id": "utils_helpers_get_model_dir"
+    },
+    {
+      "label": "get_data_dir()",
+      "file_type": "code",
+      "source_file": "utils/helpers.py",
+      "source_location": "L49",
+      "community": 2,
+      "norm_label": "get_data_dir()",
+      "id": "utils_helpers_get_data_dir"
+    },
+    {
+      "label": "get_sample_dir()",
+      "file_type": "code",
+      "source_file": "utils/helpers.py",
+      "source_location": "L54",
+      "community": 2,
+      "norm_label": "get_sample_dir()",
+      "id": "utils_helpers_get_sample_dir"
+    },
+    {
+      "label": "ensure_dir()",
+      "file_type": "code",
+      "source_file": "utils/helpers.py",
+      "source_location": "L59",
+      "community": 2,
+      "norm_label": "ensure_dir()",
+      "id": "utils_helpers_ensure_dir"
+    },
+    {
+      "label": "format_confidence()",
+      "file_type": "code",
+      "source_file": "utils/helpers.py",
+      "source_location": "L65",
+      "community": 2,
+      "norm_label": "format_confidence()",
+      "id": "utils_helpers_format_confidence"
+    },
+    {
+      "label": "Helper Utilities ================ Common helper functions used across the proj",
+      "file_type": "rationale",
+      "source_file": "utils/helpers.py",
+      "source_location": "L1",
+      "community": 2,
+      "norm_label": "helper utilities ================ common helper functions used across the proj",
+      "id": "utils_helpers_rationale_1"
+    },
+    {
+      "label": "Get the project root directory.",
+      "file_type": "rationale",
+      "source_file": "utils/helpers.py",
+      "source_location": "L40",
+      "community": 2,
+      "norm_label": "get the project root directory.",
+      "id": "utils_helpers_rationale_40"
+    },
+    {
+      "label": "Get the saved model directory path.",
+      "file_type": "rationale",
+      "source_file": "utils/helpers.py",
+      "source_location": "L45",
+      "community": 2,
+      "norm_label": "get the saved model directory path.",
+      "id": "utils_helpers_rationale_45"
+    },
+    {
+      "label": "Get the data directory path.",
+      "file_type": "rationale",
+      "source_file": "utils/helpers.py",
+      "source_location": "L50",
+      "community": 2,
+      "norm_label": "get the data directory path.",
+      "id": "utils_helpers_rationale_50"
+    },
+    {
+      "label": "Get the sample fingerprints directory path.",
+      "file_type": "rationale",
+      "source_file": "utils/helpers.py",
+      "source_location": "L55",
+      "community": 2,
+      "norm_label": "get the sample fingerprints directory path.",
+      "id": "utils_helpers_rationale_55"
+    },
+    {
+      "label": "Create directory if it doesn't exist.",
+      "file_type": "rationale",
+      "source_file": "utils/helpers.py",
+      "source_location": "L60",
+      "community": 2,
+      "norm_label": "create directory if it doesn't exist.",
+      "id": "utils_helpers_rationale_60"
+    },
+    {
+      "label": "Format confidence scores for display.          Args:         confidence_score",
+      "file_type": "rationale",
+      "source_file": "utils/helpers.py",
+      "source_location": "L66",
+      "community": 2,
+      "norm_label": "format confidence scores for display.          args:         confidence_score",
+      "id": "utils_helpers_rationale_66"
+    },
+    {
+      "label": "preprocessing.py",
+      "file_type": "code",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "preprocessing.py",
+      "id": "utils_preprocessing_py"
+    },
+    {
+      "label": "load_image()",
+      "file_type": "code",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L21",
+      "community": 4,
+      "norm_label": "load_image()",
+      "id": "utils_preprocessing_load_image"
+    },
+    {
+      "label": "convert_to_grayscale()",
+      "file_type": "code",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L50",
+      "community": 4,
+      "norm_label": "convert_to_grayscale()",
+      "id": "utils_preprocessing_convert_to_grayscale"
+    },
+    {
+      "label": "resize_image()",
+      "file_type": "code",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L65",
+      "community": 4,
+      "norm_label": "resize_image()",
+      "id": "utils_preprocessing_resize_image"
+    },
+    {
+      "label": "denoise_image()",
+      "file_type": "code",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L79",
+      "community": 4,
+      "norm_label": "denoise_image()",
+      "id": "utils_preprocessing_denoise_image"
+    },
+    {
+      "label": "enhance_contrast()",
+      "file_type": "code",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L93",
+      "community": 4,
+      "norm_label": "enhance_contrast()",
+      "id": "utils_preprocessing_enhance_contrast"
+    },
+    {
+      "label": "apply_threshold()",
+      "file_type": "code",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L113",
+      "community": 4,
+      "norm_label": "apply_threshold()",
+      "id": "utils_preprocessing_apply_threshold"
+    },
+    {
+      "label": "preprocess_fingerprint()",
+      "file_type": "code",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L133",
+      "community": 4,
+      "norm_label": "preprocess_fingerprint()",
+      "id": "utils_preprocessing_preprocess_fingerprint"
+    },
+    {
+      "label": "Fingerprint Image Preprocessing Module ======================================",
+      "file_type": "rationale",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L1",
+      "community": 4,
+      "norm_label": "fingerprint image preprocessing module ======================================",
+      "id": "utils_preprocessing_rationale_1"
+    },
+    {
+      "label": "Load image from file path or PIL Image object.          Args:         image_i",
+      "file_type": "rationale",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L22",
+      "community": 4,
+      "norm_label": "load image from file path or pil image object.          args:         image_i",
+      "id": "utils_preprocessing_rationale_22"
+    },
+    {
+      "label": "Convert image to grayscale.          Args:         image: numpy array (BGR or",
+      "file_type": "rationale",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L51",
+      "community": 4,
+      "norm_label": "convert image to grayscale.          args:         image: numpy array (bgr or",
+      "id": "utils_preprocessing_rationale_51"
+    },
+    {
+      "label": "Resize image to standard dimensions.          Args:         image: numpy arra",
+      "file_type": "rationale",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L66",
+      "community": 4,
+      "norm_label": "resize image to standard dimensions.          args:         image: numpy arra",
+      "id": "utils_preprocessing_rationale_66"
+    },
+    {
+      "label": "Apply Gaussian blur for denoising.          Args:         image: numpy array",
+      "file_type": "rationale",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L80",
+      "community": 4,
+      "norm_label": "apply gaussian blur for denoising.          args:         image: numpy array",
+      "id": "utils_preprocessing_rationale_80"
+    },
+    {
+      "label": "Apply CLAHE (Contrast Limited Adaptive Histogram Equalization)     for contrast",
+      "file_type": "rationale",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L94",
+      "community": 4,
+      "norm_label": "apply clahe (contrast limited adaptive histogram equalization)     for contrast",
+      "id": "utils_preprocessing_rationale_94"
+    },
+    {
+      "label": "Apply adaptive binary thresholding for ridge extraction.          Args:",
+      "file_type": "rationale",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L114",
+      "community": 4,
+      "norm_label": "apply adaptive binary thresholding for ridge extraction.          args:",
+      "id": "utils_preprocessing_rationale_114"
+    },
+    {
+      "label": "Full preprocessing pipeline for fingerprint images.          Args:         im",
+      "file_type": "rationale",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L134",
+      "community": 4,
+      "norm_label": "full preprocessing pipeline for fingerprint images.          args:         im",
+      "id": "utils_preprocessing_rationale_134"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fix_arch_indent.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "fix_arch_indent_py",
+      "target": "collage_project_special_fix_arch_indent_dedent_html"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_blood_group_v3_channelattention"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_blood_group_v3_spatialattention"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_blood_group_v3_cbam"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_blood_group_v3_cbam_init"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L169",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_blood_group_v3_cbam_forward"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L195",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_predict_predict_cnn"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L201",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_cnn_model_bloodgroupcnn_count_parameters"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L207",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_blood_group_v3_get_abo_rh_labels"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L219",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_blood_group_v3_combined_to_blood_group_idx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L227",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_py",
+      "target": "model_blood_group_v3_save_v3_model"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L257",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_load_v3_model",
+      "target": "model_blood_group_v3_py"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_rationale_1",
+      "target": "model_blood_group_v3_py"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_rationale_106",
+      "target": "model_blood_group_v3_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train_v3.py",
+      "source_location": "L270",
+      "weight": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "model_blood_group_v3_py"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_cbam_init",
+      "target": "model_blood_group_v3_channelattention"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_channelattention",
+      "target": "model_blood_group_v3_cbam_forward"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_rationale_56",
+      "target": "model_blood_group_v3_channelattention"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_cbam_init",
+      "target": "model_blood_group_v3_spatialattention"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_spatialattention",
+      "target": "model_blood_group_v3_cbam_forward"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_rationale_75",
+      "target": "model_blood_group_v3_spatialattention"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_cbam_init",
+      "target": "model_blood_group_v3_cbam"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L178",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_cbam_forward",
+      "target": "model_blood_group_v3_cbam"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_rationale_91",
+      "target": "model_blood_group_v3_cbam"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_bloodgroupcnn",
+      "target": "model_blood_group_v3_cbam_init"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L198",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_predict_cnn",
+      "target": "model_blood_group_v3_cbam_forward"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L170",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_rationale_170",
+      "target": "model_blood_group_v3_cbam_forward"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_bloodgroupcnn",
+      "target": "model_blood_group_v3_cbam_forward"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_bloodgroupcnn_get_probabilities",
+      "target": "model_blood_group_v3_cbam_forward"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L208",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_rationale_208",
+      "target": "model_blood_group_v3_get_abo_rh_labels"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train_v3.py",
+      "source_location": "L363",
+      "weight": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "model_blood_group_v3_get_abo_rh_labels"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L220",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_rationale_220",
+      "target": "model_blood_group_v3_combined_to_blood_group_idx"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L246",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_save_v3_model",
+      "target": "model_cnn_model_bloodgroupcnn_count_parameters"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "model_blood_group_v3_save_v3_model",
+      "target": "utils_helpers_ensure_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "model_blood_group_v3_save_v3_model",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train_v3.py",
+      "source_location": "L557",
+      "weight": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "model_blood_group_v3_save_v3_model"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L252",
+      "weight": 1.0,
+      "source": "model_blood_group_v3_load_v3_model",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/blood_group_v3.py",
+      "source_location": "L196",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_blood_group_v3_rationale_196",
+      "target": "model_predict_predict_cnn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_py",
+      "target": "model_cnn_model_bloodgroupcnn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_py",
+      "target": "model_cnn_model_save_cnn_model"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L110",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_py",
+      "target": "model_cnn_model_load_cnn_model"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L147",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_py",
+      "target": "model_cnn_model_get_inference_transform"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_rationale_1",
+      "target": "model_cnn_model_py"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_bloodgroupcnn",
+      "target": "model_cnn_model_bloodgroupcnn_get_probabilities"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_bloodgroupcnn",
+      "target": "model_cnn_model_bloodgroupcnn_count_parameters"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L138",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_load_cnn_model",
+      "target": "model_cnn_model_bloodgroupcnn"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_rationale_38",
+      "target": "model_cnn_model_bloodgroupcnn"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train.py",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "model_train_train_cnn",
+      "target": "model_cnn_model_bloodgroupcnn"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/task2_compatibility_check.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "model_cnn_model_bloodgroupcnn"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_rationale_78",
+      "target": "model_cnn_model_bloodgroupcnn_get_probabilities"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_save_cnn_model",
+      "target": "model_cnn_model_bloodgroupcnn_count_parameters"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L84",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_rationale_84",
+      "target": "model_cnn_model_bloodgroupcnn_count_parameters"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_rationale_89",
+      "target": "model_cnn_model_save_cnn_model"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/cnn_model.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "model_cnn_model_save_cnn_model",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/cnn_model.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "model_cnn_model_save_cnn_model",
+      "target": "utils_helpers_ensure_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train.py",
+      "source_location": "L311",
+      "weight": 1.0,
+      "source": "model_train_train_cnn",
+      "target": "model_cnn_model_save_cnn_model"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L111",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_rationale_111",
+      "target": "model_cnn_model_load_cnn_model"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/cnn_model.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "model_cnn_model_load_cnn_model",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "model_predict_load_model",
+      "target": "model_cnn_model_load_cnn_model"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "model_predict_predict_cnn",
+      "target": "model_cnn_model_load_cnn_model"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/cnn_model.py",
+      "source_location": "L148",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_cnn_model_rationale_148",
+      "target": "model_cnn_model_get_inference_transform"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "model_predict_predict_cnn",
+      "target": "model_cnn_model_get_inference_transform"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_feature_extraction_py",
+      "target": "model_feature_extraction_extract_orientation_features"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_feature_extraction_py",
+      "target": "model_feature_extraction_extract_wavelet_features"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_feature_extraction_py",
+      "target": "model_feature_extraction_extract_all_features"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_feature_extraction_rationale_1",
+      "target": "model_feature_extraction_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L157",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_feature_extraction_extract_all_features",
+      "target": "model_feature_extraction_extract_orientation_features"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_feature_extraction_rationale_18",
+      "target": "model_feature_extraction_extract_orientation_features"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_feature_extraction_extract_all_features",
+      "target": "model_feature_extraction_extract_wavelet_features"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_feature_extraction_rationale_95",
+      "target": "model_feature_extraction_extract_wavelet_features"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/feature_extraction.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_feature_extraction_rationale_145",
+      "target": "model_feature_extraction_extract_all_features"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L207",
+      "weight": 1.0,
+      "source": "model_predict_predict_rf",
+      "target": "model_feature_extraction_extract_all_features"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_py",
+      "target": "model_predict_get_available_cnn_variants"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_py",
+      "target": "model_predict_cnn_model_exists"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_py",
+      "target": "model_predict_rf_model_exists"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_py",
+      "target": "model_predict_get_active_model_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_py",
+      "target": "model_predict_load_model"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_py",
+      "target": "model_predict_predict_blood_group"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L124",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_py",
+      "target": "model_predict_predict_cnn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L193",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_py",
+      "target": "model_predict_predict_rf"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L233",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_py",
+      "target": "model_predict_predict_from_features"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_1",
+      "target": "model_predict_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_cnn_model_exists",
+      "target": "model_predict_get_available_cnn_variants"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_get_active_model_type",
+      "target": "model_predict_get_available_cnn_variants"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_load_model",
+      "target": "model_predict_get_available_cnn_variants"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_predict_blood_group",
+      "target": "model_predict_get_available_cnn_variants"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_29",
+      "target": "model_predict_get_available_cnn_variants"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "model_predict_get_available_cnn_variants",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_38",
+      "target": "model_predict_cnn_model_exists"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_get_active_model_type",
+      "target": "model_predict_rf_model_exists"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_load_model",
+      "target": "model_predict_rf_model_exists"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_42",
+      "target": "model_predict_rf_model_exists"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "model_predict_rf_model_exists",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_predict_blood_group",
+      "target": "model_predict_get_active_model_type"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_49",
+      "target": "model_predict_get_active_model_type"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/task2_compatibility_check.py",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "model_predict_get_active_model_type"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_63",
+      "target": "model_predict_load_model"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "model_predict_load_model",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L110",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_predict_blood_group",
+      "target": "model_predict_predict_cnn"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_predict_blood_group",
+      "target": "model_predict_predict_rf"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_87",
+      "target": "model_predict_predict_blood_group"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "model_predict_predict_blood_group",
+      "target": "utils_preprocessing_preprocess_fingerprint"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "scripts_task7_model_test_run_batch_inference",
+      "target": "model_predict_predict_blood_group"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_125",
+      "target": "model_predict_predict_cnn"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "model_predict_predict_cnn",
+      "target": "utils_helpers_format_confidence"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L194",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_194",
+      "target": "model_predict_predict_rf"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "model_predict_predict_rf",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L215",
+      "weight": 1.0,
+      "source": "model_predict_predict_rf",
+      "target": "utils_helpers_format_confidence"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/predict.py",
+      "source_location": "L234",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_predict_rationale_234",
+      "target": "model_predict_predict_from_features"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L236",
+      "weight": 1.0,
+      "source": "model_predict_predict_from_features",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/predict.py",
+      "source_location": "L247",
+      "weight": 1.0,
+      "source": "model_predict_predict_from_features",
+      "target": "utils_helpers_format_confidence"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_py",
+      "target": "model_train_generate_cnn_plots"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_py",
+      "target": "model_train_train_cnn"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_rationale_1",
+      "target": "model_train_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train.py",
+      "source_location": "L302",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_train_cnn",
+      "target": "model_train_generate_cnn_plots"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "model_train_generate_cnn_plots",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "model_train_generate_cnn_plots",
+      "target": "utils_helpers_ensure_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train.py",
+      "source_location": "L150",
+      "weight": 1.0,
+      "source": "model_train_train_cnn",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "source": "model_train_train_cnn",
+      "target": "utils_helpers_ensure_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train.py",
+      "source_location": "L185",
+      "weight": 1.0,
+      "source": "model_train_train_cnn",
+      "target": "model_train_v3_mixup_data"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_py",
+      "target": "model_train_v3_build_transforms"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_py",
+      "target": "model_train_v3_mixup_data"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_py",
+      "target": "model_train_v3_cutmix_data"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L123",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_py",
+      "target": "model_train_v3_mixed_loss"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L129",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_py",
+      "target": "model_train_v3_set_phase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L198",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_py",
+      "target": "model_train_v3_train_v3"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L568",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_py",
+      "target": "model_train_v3_save_plots"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_rationale_1",
+      "target": "model_train_v3_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L229",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "model_train_v3_build_transforms"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L369",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "model_train_v3_mixup_data"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_rationale_88",
+      "target": "model_train_v3_mixup_data"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L371",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "model_train_v3_cutmix_data"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_rationale_100",
+      "target": "model_train_v3_cutmix_data"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L378",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "model_train_v3_mixed_loss"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L304",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "model_train_v3_set_phase"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_rationale_130",
+      "target": "model_train_v3_set_phase"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "model/train_v3.py",
+      "source_location": "L545",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "model_train_v3_save_plots"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train_v3.py",
+      "source_location": "L301",
+      "weight": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train_v3.py",
+      "source_location": "L302",
+      "weight": 1.0,
+      "source": "model_train_v3_train_v3",
+      "target": "utils_helpers_ensure_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "model/train_v3.py",
+      "source_location": "L569",
+      "weight": 1.0,
+      "source": "model_train_v3_save_plots",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/post_training_save.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_post_training_save_rationale_1",
+      "target": "scripts_post_training_save_py"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task1_overfit_check.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task1_overfit_check_py",
+      "target": "scripts_task7_model_test_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task1_overfit_check.py",
+      "source_location": "L161",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task1_overfit_check_py",
+      "target": "scripts_task1_overfit_check_analyze_accuracy_only"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task1_overfit_check.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task1_overfit_check_rationale_1",
+      "target": "scripts_task1_overfit_check_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task1_overfit_check.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task1_overfit_check_analyze_accuracy_only"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task2_compatibility_check.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task2_compatibility_check_py",
+      "target": "scripts_task2_compatibility_check_check"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task2_compatibility_check.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task2_compatibility_check_py",
+      "target": "scripts_task7_model_test_main"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task2_compatibility_check.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task2_compatibility_check_rationale_1",
+      "target": "scripts_task2_compatibility_check_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task2_compatibility_check.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task2_compatibility_check_check"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task3_model_upgrade.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task3_model_upgrade_py",
+      "target": "scripts_task3_model_upgrade_compare_models"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task3_model_upgrade.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task3_model_upgrade_py",
+      "target": "scripts_task7_model_test_main"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task3_model_upgrade.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task3_model_upgrade_rationale_1",
+      "target": "scripts_task3_model_upgrade_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task3_model_upgrade.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task3_model_upgrade_compare_models"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task4_sample_audit_py",
+      "target": "scripts_task4_sample_audit_count_images_in_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task4_sample_audit_py",
+      "target": "scripts_task4_sample_audit_compute_splits"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task4_sample_audit_py",
+      "target": "scripts_task7_model_test_main"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task4_sample_audit_rationale_1",
+      "target": "scripts_task4_sample_audit_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task4_sample_audit_count_images_in_dir"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task4_sample_audit_rationale_33",
+      "target": "scripts_task4_sample_audit_count_images_in_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task4_sample_audit_compute_splits"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task4_sample_audit.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task4_sample_audit_rationale_56",
+      "target": "scripts_task4_sample_audit_compute_splits"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task5_dataset_clean_py",
+      "target": "scripts_task5_dataset_clean_is_valid_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task5_dataset_clean_py",
+      "target": "scripts_task5_dataset_clean_augment_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task5_dataset_clean_py",
+      "target": "scripts_task5_dataset_clean_collect_valid_images"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task5_dataset_clean_py",
+      "target": "scripts_task7_model_test_main"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task5_dataset_clean_rationale_1",
+      "target": "scripts_task5_dataset_clean_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task5_dataset_clean_collect_valid_images",
+      "target": "scripts_task5_dataset_clean_is_valid_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L131",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task5_dataset_clean_is_valid_image"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task5_dataset_clean_rationale_39",
+      "target": "scripts_task5_dataset_clean_is_valid_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L220",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task5_dataset_clean_augment_image"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task5_dataset_clean_rationale_51",
+      "target": "scripts_task5_dataset_clean_augment_image"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task5_dataset_clean.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task5_dataset_clean_rationale_94",
+      "target": "scripts_task5_dataset_clean_collect_valid_images"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task6_train_high_accuracy_py",
+      "target": "scripts_task6_train_high_accuracy_pick_best_dataset"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task6_train_high_accuracy_py",
+      "target": "scripts_task6_train_high_accuracy_patch_train_py"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task6_train_high_accuracy_py",
+      "target": "scripts_task7_model_test_main"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task6_train_high_accuracy_rationale_1",
+      "target": "scripts_task6_train_high_accuracy_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L142",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task6_train_high_accuracy_pick_best_dataset"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task6_train_high_accuracy_rationale_30",
+      "target": "scripts_task6_train_high_accuracy_pick_best_dataset"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L135",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task6_train_high_accuracy_patch_train_py"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task6_train_high_accuracy.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task6_train_high_accuracy_rationale_51",
+      "target": "scripts_task6_train_high_accuracy_patch_train_py"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_py",
+      "target": "scripts_task7_model_test_get_dataset_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_py",
+      "target": "scripts_task7_model_test_collect_images"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_py",
+      "target": "scripts_task7_model_test_run_batch_inference"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_py",
+      "target": "scripts_task7_model_test_compute_confusion"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_py",
+      "target": "scripts_task7_model_test_save_confusion_matrix"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L121",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_py",
+      "target": "scripts_task7_model_test_main"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_rationale_1",
+      "target": "scripts_task7_model_test_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L126",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task7_model_test_get_dataset_dir"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_rationale_34",
+      "target": "scripts_task7_model_test_get_dataset_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task7_model_test_collect_images"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_rationale_47",
+      "target": "scripts_task7_model_test_collect_images"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L159",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task7_model_test_run_batch_inference"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_rationale_68",
+      "target": "scripts_task7_model_test_run_batch_inference"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L171",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task7_model_test_compute_confusion"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_rationale_93",
+      "target": "scripts_task7_model_test_compute_confusion"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/task7_model_test.py",
+      "source_location": "L172",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_task7_model_test_main",
+      "target": "scripts_task7_model_test_save_confusion_matrix"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_py",
+      "target": "utils_helpers_get_project_root"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_py",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_py",
+      "target": "utils_helpers_get_data_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_py",
+      "target": "utils_helpers_get_sample_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_py",
+      "target": "utils_helpers_ensure_dir"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_py",
+      "target": "utils_helpers_format_confidence"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_rationale_1",
+      "target": "utils_helpers_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_get_model_dir",
+      "target": "utils_helpers_get_project_root"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_get_data_dir",
+      "target": "utils_helpers_get_project_root"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_rationale_40",
+      "target": "utils_helpers_get_project_root"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_rationale_45",
+      "target": "utils_helpers_get_model_dir"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_get_sample_dir",
+      "target": "utils_helpers_get_data_dir"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_rationale_50",
+      "target": "utils_helpers_get_data_dir"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_rationale_55",
+      "target": "utils_helpers_get_sample_dir"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_rationale_60",
+      "target": "utils_helpers_ensure_dir"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/helpers.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_helpers_rationale_66",
+      "target": "utils_helpers_format_confidence"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_py",
+      "target": "utils_preprocessing_load_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_py",
+      "target": "utils_preprocessing_convert_to_grayscale"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_py",
+      "target": "utils_preprocessing_resize_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_py",
+      "target": "utils_preprocessing_denoise_image"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_py",
+      "target": "utils_preprocessing_enhance_contrast"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L113",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_py",
+      "target": "utils_preprocessing_apply_threshold"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L133",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_py",
+      "target": "utils_preprocessing_preprocess_fingerprint"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_rationale_1",
+      "target": "utils_preprocessing_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_preprocess_fingerprint",
+      "target": "utils_preprocessing_load_image"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_rationale_22",
+      "target": "utils_preprocessing_load_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L154",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_preprocess_fingerprint",
+      "target": "utils_preprocessing_convert_to_grayscale"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_rationale_51",
+      "target": "utils_preprocessing_convert_to_grayscale"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L157",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_preprocess_fingerprint",
+      "target": "utils_preprocessing_resize_image"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_rationale_66",
+      "target": "utils_preprocessing_resize_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_preprocess_fingerprint",
+      "target": "utils_preprocessing_denoise_image"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_rationale_80",
+      "target": "utils_preprocessing_denoise_image"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L163",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_preprocess_fingerprint",
+      "target": "utils_preprocessing_enhance_contrast"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_rationale_94",
+      "target": "utils_preprocessing_enhance_contrast"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L166",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_preprocess_fingerprint",
+      "target": "utils_preprocessing_apply_threshold"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_rationale_114",
+      "target": "utils_preprocessing_apply_threshold"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "utils/preprocessing.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_preprocessing_rationale_134",
+      "target": "utils_preprocessing_preprocess_fingerprint"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "39231af18bf5be016bd4c4c460858a8e024f72dc"
+}

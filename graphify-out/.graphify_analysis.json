@@ -1,0 +1,350 @@
+{
+  "communities": {
+    "0": [
+      "scripts_task1_overfit_check_analyze_accuracy_only",
+      "scripts_task1_overfit_check_py",
+      "scripts_task1_overfit_check_rationale_1",
+      "scripts_task2_compatibility_check_check",
+      "scripts_task2_compatibility_check_py",
+      "scripts_task2_compatibility_check_rationale_1",
+      "scripts_task3_model_upgrade_compare_models",
+      "scripts_task3_model_upgrade_py",
+      "scripts_task3_model_upgrade_rationale_1",
+      "scripts_task4_sample_audit_compute_splits",
+      "scripts_task4_sample_audit_count_images_in_dir",
+      "scripts_task4_sample_audit_py",
+      "scripts_task4_sample_audit_rationale_1",
+      "scripts_task4_sample_audit_rationale_33",
+      "scripts_task4_sample_audit_rationale_56",
+      "scripts_task5_dataset_clean_augment_image",
+      "scripts_task5_dataset_clean_collect_valid_images",
+      "scripts_task5_dataset_clean_is_valid_image",
+      "scripts_task5_dataset_clean_py",
+      "scripts_task5_dataset_clean_rationale_1",
+      "scripts_task5_dataset_clean_rationale_39",
+      "scripts_task5_dataset_clean_rationale_51",
+      "scripts_task5_dataset_clean_rationale_94",
+      "scripts_task6_train_high_accuracy_patch_train_py",
+      "scripts_task6_train_high_accuracy_pick_best_dataset",
+      "scripts_task6_train_high_accuracy_py",
+      "scripts_task6_train_high_accuracy_rationale_1",
+      "scripts_task6_train_high_accuracy_rationale_30",
+      "scripts_task6_train_high_accuracy_rationale_51",
+      "scripts_task7_model_test_collect_images",
+      "scripts_task7_model_test_compute_confusion",
+      "scripts_task7_model_test_get_dataset_dir",
+      "scripts_task7_model_test_main",
+      "scripts_task7_model_test_py",
+      "scripts_task7_model_test_rationale_1",
+      "scripts_task7_model_test_rationale_34",
+      "scripts_task7_model_test_rationale_47",
+      "scripts_task7_model_test_rationale_68",
+      "scripts_task7_model_test_rationale_93",
+      "scripts_task7_model_test_run_batch_inference",
+      "scripts_task7_model_test_save_confusion_matrix"
+    ],
+    "1": [
+      "model_blood_group_v3_cbam",
+      "model_blood_group_v3_cbam_forward",
+      "model_blood_group_v3_cbam_init",
+      "model_blood_group_v3_channelattention",
+      "model_blood_group_v3_combined_to_blood_group_idx",
+      "model_blood_group_v3_load_v3_model",
+      "model_blood_group_v3_py",
+      "model_blood_group_v3_rationale_1",
+      "model_blood_group_v3_rationale_106",
+      "model_blood_group_v3_rationale_170",
+      "model_blood_group_v3_rationale_196",
+      "model_blood_group_v3_rationale_220",
+      "model_blood_group_v3_rationale_56",
+      "model_blood_group_v3_rationale_75",
+      "model_blood_group_v3_rationale_91",
+      "model_blood_group_v3_spatialattention",
+      "model_cnn_model_bloodgroupcnn",
+      "model_cnn_model_bloodgroupcnn_get_probabilities",
+      "model_cnn_model_get_inference_transform",
+      "model_cnn_model_load_cnn_model",
+      "model_cnn_model_py",
+      "model_cnn_model_rationale_1",
+      "model_cnn_model_rationale_111",
+      "model_cnn_model_rationale_148",
+      "model_cnn_model_rationale_38",
+      "model_cnn_model_rationale_78",
+      "model_predict_predict_cnn",
+      "model_predict_rationale_125"
+    ],
+    "2": [
+      "model_blood_group_v3_save_v3_model",
+      "model_cnn_model_bloodgroupcnn_count_parameters",
+      "model_cnn_model_rationale_84",
+      "model_cnn_model_rationale_89",
+      "model_cnn_model_save_cnn_model",
+      "model_predict_predict_from_features",
+      "model_predict_rationale_234",
+      "model_train_generate_cnn_plots",
+      "model_train_py",
+      "model_train_rationale_1",
+      "model_train_train_cnn",
+      "utils_helpers_ensure_dir",
+      "utils_helpers_format_confidence",
+      "utils_helpers_get_data_dir",
+      "utils_helpers_get_model_dir",
+      "utils_helpers_get_project_root",
+      "utils_helpers_get_sample_dir",
+      "utils_helpers_py",
+      "utils_helpers_rationale_1",
+      "utils_helpers_rationale_40",
+      "utils_helpers_rationale_45",
+      "utils_helpers_rationale_50",
+      "utils_helpers_rationale_55",
+      "utils_helpers_rationale_60",
+      "utils_helpers_rationale_66"
+    ],
+    "3": [
+      "model_predict_cnn_model_exists",
+      "model_predict_get_active_model_type",
+      "model_predict_get_available_cnn_variants",
+      "model_predict_load_model",
+      "model_predict_predict_blood_group",
+      "model_predict_predict_rf",
+      "model_predict_py",
+      "model_predict_rationale_1",
+      "model_predict_rationale_194",
+      "model_predict_rationale_29",
+      "model_predict_rationale_38",
+      "model_predict_rationale_42",
+      "model_predict_rationale_49",
+      "model_predict_rationale_63",
+      "model_predict_rationale_87",
+      "model_predict_rf_model_exists"
+    ],
+    "4": [
+      "utils_preprocessing_apply_threshold",
+      "utils_preprocessing_convert_to_grayscale",
+      "utils_preprocessing_denoise_image",
+      "utils_preprocessing_enhance_contrast",
+      "utils_preprocessing_load_image",
+      "utils_preprocessing_preprocess_fingerprint",
+      "utils_preprocessing_py",
+      "utils_preprocessing_rationale_1",
+      "utils_preprocessing_rationale_114",
+      "utils_preprocessing_rationale_134",
+      "utils_preprocessing_rationale_22",
+      "utils_preprocessing_rationale_51",
+      "utils_preprocessing_rationale_66",
+      "utils_preprocessing_rationale_80",
+      "utils_preprocessing_rationale_94",
+      "utils_preprocessing_resize_image"
+    ],
+    "5": [
+      "model_blood_group_v3_get_abo_rh_labels",
+      "model_blood_group_v3_rationale_208",
+      "model_train_v3_build_transforms",
+      "model_train_v3_cutmix_data",
+      "model_train_v3_mixed_loss",
+      "model_train_v3_mixup_data",
+      "model_train_v3_py",
+      "model_train_v3_rationale_1",
+      "model_train_v3_rationale_100",
+      "model_train_v3_rationale_130",
+      "model_train_v3_rationale_88",
+      "model_train_v3_save_plots",
+      "model_train_v3_set_phase",
+      "model_train_v3_train_v3"
+    ],
+    "6": [
+      "model_feature_extraction_extract_all_features",
+      "model_feature_extraction_extract_orientation_features",
+      "model_feature_extraction_extract_wavelet_features",
+      "model_feature_extraction_py",
+      "model_feature_extraction_rationale_1",
+      "model_feature_extraction_rationale_145",
+      "model_feature_extraction_rationale_18",
+      "model_feature_extraction_rationale_95"
+    ],
+    "7": [
+      "collage_project_special_fix_arch_indent_dedent_html",
+      "fix_arch_indent_py"
+    ],
+    "8": [
+      "scripts_post_training_save_py",
+      "scripts_post_training_save_rationale_1"
+    ],
+    "9": [
+      "app_py"
+    ],
+    "10": [
+      "fix_app_py"
+    ],
+    "11": [
+      "fix_app_ui_py"
+    ],
+    "12": [
+      "inspect_models_py"
+    ],
+    "13": [
+      "make_arch_py"
+    ],
+    "14": [
+      "make_attractive_py"
+    ],
+    "15": [
+      "patch_app_py"
+    ],
+    "16": [
+      "rename_models_py"
+    ],
+    "17": [
+      "model_init_py"
+    ],
+    "18": [
+      "scripts_check_progress_py"
+    ],
+    "19": [
+      "scripts_deep_analysis_py"
+    ],
+    "20": [
+      "scripts_estimate_time_py"
+    ],
+    "21": [
+      "scripts_fix_encoding_py"
+    ]
+  },
+  "cohesion": {
+    "0": 0.07,
+    "1": 0.1,
+    "2": 0.12,
+    "3": 0.19,
+    "4": 0.17,
+    "5": 0.21,
+    "6": 0.32,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0
+  },
+  "gods": [
+    {
+      "id": "scripts_task7_model_test_main",
+      "label": "main()",
+      "degree": 23
+    },
+    {
+      "id": "utils_helpers_get_model_dir",
+      "label": "get_model_dir()",
+      "degree": 16
+    },
+    {
+      "id": "model_train_v3_train_v3",
+      "label": "train_v3()",
+      "degree": 12
+    },
+    {
+      "id": "model_cnn_model_bloodgroupcnn",
+      "label": "BloodGroupCNN",
+      "degree": 9
+    },
+    {
+      "id": "model_predict_predict_cnn",
+      "label": "_predict_cnn()",
+      "degree": 9
+    },
+    {
+      "id": "utils_preprocessing_preprocess_fingerprint",
+      "label": "preprocess_fingerprint()",
+      "degree": 9
+    },
+    {
+      "id": "model_predict_predict_blood_group",
+      "label": "predict_blood_group()",
+      "degree": 8
+    },
+    {
+      "id": "model_predict_get_available_cnn_variants",
+      "label": "_get_available_cnn_variants()",
+      "degree": 7
+    },
+    {
+      "id": "model_train_train_cnn",
+      "label": "train_cnn()",
+      "degree": 7
+    },
+    {
+      "id": "utils_helpers_ensure_dir",
+      "label": "ensure_dir()",
+      "degree": 7
+    }
+  ],
+  "surprises": [
+    {
+      "source": "load_v3_model()",
+      "target": "get_model_dir()",
+      "source_files": [
+        "model/blood_group_v3.py",
+        "utils/helpers.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities; peripheral node `load_v3_model()` unexpectedly reaches hub `get_model_dir()`"
+    },
+    {
+      "source": "main()",
+      "target": "BloodGroupCNN",
+      "source_files": [
+        "scripts/task7_model_test.py",
+        "model/cnn_model.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "load_cnn_model()",
+      "target": "get_model_dir()",
+      "source_files": [
+        "model/cnn_model.py",
+        "utils/helpers.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "_get_available_cnn_variants()",
+      "target": "get_model_dir()",
+      "source_files": [
+        "model/predict.py",
+        "utils/helpers.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "_rf_model_exists()",
+      "target": "get_model_dir()",
+      "source_files": [
+        "model/predict.py",
+        "utils/helpers.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

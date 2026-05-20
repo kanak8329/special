@@ -88,6 +88,7 @@
 ## 🧠 Q&A Cheat Sheet
 *(Keep these answers ready in case your professor asks.)*
 
+
 **Q: Why use EfficientNet over simpler models like VGG16?**
 > A: EfficientNet uses a compound scaling method that balances depth, width, and resolution. Unlike VGG16, which is bloated and slow, EfficientNet requires far fewer parameters while still generating massively richer feature maps. This allows sub-second inference.
 
